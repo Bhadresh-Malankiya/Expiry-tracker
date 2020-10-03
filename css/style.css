@@ -646,3 +646,4 @@ border-radius: 50%;
     .card2:hover~.card2{
         transform: translateX(130px);
     }
+	
