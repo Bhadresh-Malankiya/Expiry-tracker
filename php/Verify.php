@@ -22,7 +22,8 @@
 				while($row = mysqli_fetch_array($result)){
 					
 					session_start();
-					header('location: ../addproducts.html');
+					$_SESSION['username']=$username;
+					header('refresh: 3; url=../addproducts.html');
 					
 				}
 			}
