@@ -1,12 +1,16 @@
 # Expiry-tracker
+> It is a project which tracks the date of expiration of products and sends you an email when a product has expired
+## Usage        
+- Install xampp in your pc (Or lamp in Linux)
+- start xampp/lamp and start mysql server for database
+- create database name demo and create table inside users and fields are username , password and email.
+- you can add an extra field id and time for current time stamp and id is autoincrement.
+This is basically how the database works...
+<br>Thank you <br> 
 
-Is basic template and i know it needed too much improvement but as a starter at web development is best example to connecting database and creating site using html , css and php.
-i implemented log in and sign up page you can add data to localhost mysql server and start particular session thru log in using same and it's very simple coding .
+**MB-Developers**
 
-1. install xampp in your pc
-2. start xampp and start mysql server for database
-3. create database name demo and create table inside users and fields are username ,password and email.
-4. you can ad extra field id and time for current time stamp and id is autoincrement.
-is basically how database works..
-Thank you 
-______________________________________MB-Developers________________________________________________________ 
+#### Author's note:
+
+This is basic template and I know it needs improvement but as a beginner in web development, it is best example to connecting database and creating site using html , css and php.<br>
+I implemented log in and sign up page you can add data to localhost mysql server and start particular session through log in using same and it's very simple coding .
