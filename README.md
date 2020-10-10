@@ -1,5 +1,5 @@
 # Expiry-tracker
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>MB-Developers<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 Is basic template and i know it needed too much improvement but as a starter at web development is best example to connecting database and creating site using html , css and php.
 i implemented log in and sign up page you can add data to localhost mysql server and start particular session thru log in using same and it's very simple coding .
 
