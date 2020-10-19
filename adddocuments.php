@@ -1,3 +1,13 @@
+<?php
+
+	session_start();
+if(!$_SESSION["username"])
+	{
+		header('location:index.html');
+	}
+	else{
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,14 +25,9 @@
 </head>
 <body>
 
-<div class="navbar">
-<p> Expiry Tracker</p>
-<a href="php/logout.php">Logout</a>
-<a href="view.html">View Reminder </a>
-<a href="category.html">Category</a>
-<a href="adddocuments.html">Add Documents</a>
-<a href="addproducts.html">Add Products</a>
-</div>
+<?php
+	include('php/navbar.php');
+	?>
 
 
     <div class="main">
@@ -33,22 +38,27 @@
                 <div class="signup-content">
                     <form action="php/addd.php" method="POST" id="signup-form" class="signup-form">
                         <h2 class="form-title">ADD DOCUMENTS</h2>
-                        <hr><div class="form-group"><p><b>Enter Name of document</b></p>
-                            <input type="text" class="form-input" name="name" id="name" style="background-color: #FFFFFF; padding: 12px;" placeholder="document Name"/>
+                        <hr><div class="form-group"><p><b>Enter Name of document</b><b style="color:red;" > *</b></p>
+                            <input type="text" class="form-input" name="name" id="name" style="background-color: #FFFFFF; padding: 12px;" placeholder="document Name" required/>
                         </div>
-                        <div class="form-group"><p><b>Enter category of document</b></p>
-                            <input type="text" class="form-input" name="category" placeholder="Category"/>
+                        <div class="form-group"><p><b>Enter category of document</b><b style="color:red;" > *</b></p>
+                            <select class="form-input" name="category" required>
+								  <option value="">Select Category</option>
+								  <option value="Office Documents">Office Documents</option>
+								  <option value="Educational">Educational</option>
+						          <option value="Custom Documents">Custom Documents</option>
+							</select>
                         </div>
 
                         
                         <div class="form-group"><p><b>Enter issue Date</b></p>
                         <input type="date" class="form-input" name="idate" />
                         </div>
-                       <div class="form-group"> <p><b>Enter Expiry Date</b></p>
-                           <input type="date" class="form-input" name="dedate" />
+                       <div class="form-group"> <p><b>Enter Expiry Date</b><b style="color:red;" > *</b></p>
+                           <input type="date" class="form-input" name="dedate" required/>
                        </div>
-                       <div class="form-group"> <p><b>set reminder</b></p>
-                           <input type="date" class="form-input" name="drdate" />
+                       <div class="form-group"> <p><b>set reminder</b><b style="color:red;" > *</b></p>
+                           <input type="date" class="form-input" name="drdate" required/>
                        </div>
                         <div class="form-group"><p><b>Enter description about document</b></p>
                         <input type="text" class="form-input" name="ddescription" placeholder="Decription"/>
@@ -70,11 +80,11 @@
 <div class="navbar2" >
 <p style="text-align: center; margin-bottom: 0pt;"> We hope all your requirements will fullfil with expiry tracker, you can contact us by using below link.</p> 
 
-<a href="#" class="fa fa-facebook"></a> 
-<a href="#" class="fa fa-twitter"></a> 
-<a href="#" class="fa fa-google"></a>
-<a href="#" class="fa fa-instagram"></a>
-<a href="#" class="fa fa-pinterest"></a>
+<a href="https://www.facebook.com/" class="fa fa-facebook"></a> 
+<a href="https://twitter.com" class="fa fa-twitter"></a> 
+<a href="https://wa.me/917359359602" class="fa fa-whatsapp"></a>
+<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+<a href="https://in.pinterest.com" class="fa fa-pinterest"></a>
 <p style="clear: left; margin-top: 0pt;"></p> <hr>
 <a href="contact%20us.html" >Contact Us OR Feedback</a><br>
 <p style="text-align: center;"> © all rights reserved by EXPIRY TRACKER</p><br>
@@ -85,3 +95,4 @@
     <script src="js/main.js"></script>
 </body>
 </html>
+<?php }?>

@@ -1,3 +1,13 @@
+<?php
+
+	session_start();
+if(!$_SESSION["username"])
+	{
+		header('location:index.html');
+	}
+	else{
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,14 +26,9 @@
 </head>
 <body>
 
- <div class="navbar">
- <p > Expiry Tracker</p>
- <a href="php/logout.php">Logout</a>
- <a href="view.html">View Reminder </a>
- <a href="category.html">Category</a>
- <a href="adddocuments.html">Add Documents</a>
- <a href="addproducts.html">Add Products</a>
- </div>
+<?php
+	include('php/navbar.php');
+	?>
  <div class="card-container">
   <div class="card">
     <h3 class="title1">Medicines</h3>
@@ -49,18 +54,7 @@
 	  <p><b>Food 5</b></p>
     </div>
   </div>
-  <div class="card">
-    <h3 class="title1">Office Documents</h3>
-    <div class="bar">
-      <div class="emptybar"></div>
-      <div class="filledbar"></div>
-	  <p><b>Document 1</b></p>
-	  <p><b>Document 2</b></p>
-	  <p><b>Document 3</b></p>
-	  <p><b>Document 4</b></p>
-	  <p><b>Document 5</b></p>
-    </div>
-	</div>
+  
 	<div class="card">
     <h3 class="title1">Groceries</h3>
     <div class="bar">
@@ -73,30 +67,45 @@
 	  <p><b>Grocery 5</b></p>
     </div>
 	</div>
-	</div>
-	<div class="card-container" >
-	<div class="card">
-    <h3 class="title1">Category 5</h3>
+	 
+	   <div class="card">
+    <h3 class="title1">Custom Products</h3>
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>
-	  <p><b>Product 1</b></p>
-	  <p><b>Product 2</b></p>
-	  <p><b>Product 3</b></p>
-	  <p><b>Product 4</b></p>
-	  <p><b>Product 5</b></p>
+	  <p><b>custom 1</b></p>
+	  <p><b>custom 2</b></p>
+	  <p><b>custom 3</b></p>
+	  <p><b>custom 4</b></p>
+	  <p><b>custom 5</b></p>
+    </div>
+  </div>
+	</div>
+	
+	
+	<div class="card-container" >
+<div class="card">
+    <h3 class="title1">Office Documents</h3>
+    <div class="bar">
+      <div class="emptybar"></div>
+      <div class="filledbar"></div>
+	  <p><b>Document 1</b></p>
+	  <p><b>Document 2</b></p>
+	  <p><b>Document 3</b></p>
+	  <p><b>Document 4</b></p>
+	  <p><b>Document 5</b></p>
     </div>
 	</div>
 	<div class="card">
-    <h3 class="title1">Category 6</h3>
+    <h3 class="title1">Educational</h3>
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>
-	  <p><b>Product 1</b></p>
-	  <p><b>Product 2</b></p>
-	  <p><b>Product 3</b></p>
-	  <p><b>Product 4</b></p>
-	  <p><b>Product 5</b></p>
+	  <p><b>Educational 1</b></p>
+	  <p><b>Educational 2</b></p>
+	  <p><b>Educational 3</b></p>
+	  <p><b>Educatinoal 4</b></p>
+	  <p><b>Educational 5</b></p>
     </div>
     </div>
 	
@@ -114,15 +123,15 @@
 	</div>
   
   <div class="card">
-    <h3 class="title1">Category 8</h3>
+    <h3 class="title1">Custom Documents</h3>
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>
-	  <p><b>Product 1</b></p>
-	  <p><b>Product 2</b></p>
-	  <p><b>Product 3</b></p>
-	  <p><b>Product 4</b></p>
-	  <p><b>Product 5</b></p>
+	  <p><b>custom 1</b></p>
+	  <p><b>custom 2</b></p>
+	  <p><b>custom 3</b></p>
+	  <p><b>custom 4</b></p>
+	  <p><b>custom 5</b></p>
     </div>
     </div>
   </div>
@@ -132,11 +141,11 @@
 <div class="navbar2" >
 <p style="text-align: center; margin-bottom: 0pt;"> We hope all your requirements will fullfil with expiry tracker, you can contact us by using below link.</p> 
 
-<a href="#" class="fa fa-facebook"></a> 
-<a href="#" class="fa fa-twitter"></a> 
-<a href="#" class="fa fa-google"></a>
-<a href="#" class="fa fa-instagram"></a>
-<a href="#" class="fa fa-pinterest"></a>
+<a href="https://www.facebook.com/" class="fa fa-facebook"></a> 
+<a href="https://twitter.com" class="fa fa-twitter"></a> 
+<a href="https://wa.me/917359359602" class="fa fa-whatsapp"></a>
+<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+<a href="https://in.pinterest.com" class="fa fa-pinterest"></a>
 <p style="clear: left; margin-top: 0pt;"></p> <hr>
 <a href="contact%20us.html" >Contact Us OR Feedback</a><br>
 <p style="text-align: center;"> © all rights reserved by EXPIRY TRACKER</p><br>
@@ -148,3 +157,6 @@
     <script src="js/main.js"></script>
 </body>
 </html>
+<?php
+		}
+?>

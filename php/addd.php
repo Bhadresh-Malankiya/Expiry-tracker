@@ -1,6 +1,11 @@
 
 <?php
 	session_start();
+	if(!$_SESSION["username"])
+	{
+		header('location:../index.html');
+	}
+	else{
 	$username=$_SESSION["username"];
 	$dname=$_POST["name"];
  	$dcategory=$_POST["category"];
@@ -24,11 +29,10 @@
 		}
 		else
 		{
-			echo "Document successfully added ";
-			echo "<a href='../view.html'>view reminder</a> ";
-			echo "YOU WILL REDIRECT TO ADD DOCUMENT PAGE IN 3 SECONDS";
-			header('refresh: 3; url= ../adddocuments.html');
+			include("loader.php");
+			header('refresh: 3; url= ../adddocuments.php');
 		}
 		mysqli_close($con);
+	}
 	}
 ?>

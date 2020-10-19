@@ -1,3 +1,4 @@
+
 <?php
 	$email=$_POST["email"];
 	$username=$_POST["uname"];
@@ -18,7 +19,7 @@
 		}
 		else
 		{
-			header('location:../login.html');
+			header('location:../login.php');
 		}
 		mysqli_close($con);
 	}

@@ -9,6 +9,7 @@ $_SESSION = array();
 session_destroy();
  
 // Redirect to login page
-header("location: ../index.html");
+include("logoutloader.php");
+header("refresh: 2; url=../index.html");
 exit;
 ?>

@@ -5,6 +5,7 @@
 	$query = " Select * from users where username = '$username' and password= '$password'" ;
 
 	$con = mysqli_connect("localhost","root","","demo");
+	
 	if(!$con)
 	{
 		die("Connt connet to Database");
@@ -20,18 +21,19 @@
 				
 				
 				while($row = mysqli_fetch_array($result)){
-					
+					include('loader.php');
 					session_start();
 					$_SESSION['username']=$username;
-					header('refresh: 3; url=../addproducts.html');
+					
+					header('refresh: 3; url=../addproducts.php');
 					
 				}
 			}
 			else
 			{
-				echo "Incorrect username or pasword ";
-				echo "Redirect in 3 Seconds";	
-				header('refresh: 3; url=../login.html');
+				
+				include('invalidloader.php');	
+				header('refresh: 3; url=../login.php');
 			
 			}
 		}

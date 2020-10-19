@@ -1,6 +1,11 @@
 
 <?php
 	session_start();
+if(!$_SESSION["username"])
+	{
+		header('location:../index.html');
+	}
+	else{
 	$username=$_SESSION["username"];
 	$pname=$_POST["name"];
  	$pcategory=$_POST["category"];
@@ -26,11 +31,11 @@
 		}
 		else
 		{
-			echo "Product successfully added ";
-			echo "<a href='../view.html'>view reminder</a> ";
-			echo "YOU WILL REDIRECT TO ADD PRODUCT PAGE IN 3 SECONDS";
-			header('refresh: 3; url= ../addproducts.html');
+			
+			include("loader.php");
+			header('refresh: 3; url= ../addproducts.php');
 		}
 		mysqli_close($con);
+	}
 	}
 ?>
