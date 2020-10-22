@@ -46,7 +46,8 @@ if(!$_SESSION["username"])
 								  <option value="">Select Category</option>
 								  <option value="Office Documents">Office Documents</option>
 								  <option value="Educational">Educational</option>
-						          <option value="Custom Documents">Custom Documents</option>
+						          <option value="Personal">Personal</option>
+								<option value="Custom Documents">Custom Documents</option>
 							</select>
                         </div>
 
@@ -54,14 +55,14 @@ if(!$_SESSION["username"])
                         <div class="form-group"><p><b>Enter issue Date</b></p>
                         <input type="date" class="form-input" name="idate" />
                         </div>
-                       <div class="form-group"> <p><b>Enter Expiry Date</b><b style="color:red;" > *</b></p>
+                       <div class="form-group"> <p><b>Enter Due Date</b><b style="color:red;" > *</b></p>
                            <input type="date" class="form-input" name="dedate" required/>
                        </div>
                        <div class="form-group"> <p><b>set reminder</b><b style="color:red;" > *</b></p>
                            <input type="date" class="form-input" name="drdate" required/>
                        </div>
                         <div class="form-group"><p><b>Enter description about document</b></p>
-                        <input type="text" class="form-input" name="ddescription" placeholder="Decription"/>
+                        <input type="text" class="form-input" name="ddescription" placeholder="Decription" Value="Empty"/>
                         </div>
                         
  

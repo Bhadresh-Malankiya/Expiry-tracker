@@ -56,7 +56,7 @@ else
 				"</b>
 				From category :<b>".$rec2['dcategory'].
 				"</b>
-				having Expirydate :<b>".$rec2['dedate'].
+				having Due date :<b>".$rec2['dedate'].
 				"</b>
 				 and Description :<b>".$rec2['ddesc'].
 				"</b></h2><h1 >

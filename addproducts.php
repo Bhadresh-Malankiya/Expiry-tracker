@@ -68,7 +68,7 @@ if(!$_SESSION["username"])
                            <input type="date" class="form-input" name="prdate" required/>
                        </div>
                         <div class="form-group"><p><b>Enter description about product</b></p>
-                        <input type="text" class="form-input" name="pdescription" placeholder="Dscription"/>
+                        <input type="text" class="form-input" name="pdescription" placeholder="Dscription" value="Empty"/>
                         </div>
                         
                         <div class="form-group">

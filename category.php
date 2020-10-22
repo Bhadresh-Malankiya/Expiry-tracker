@@ -6,6 +6,25 @@ if(!$_SESSION["username"])
 		header('location:index.html');
 	}
 	else{
+		
+	$con = mysqli_connect("localhost","root","","demo");
+	if(!$con)
+	{
+		die("Connt connet to Database");
+	}
+	else{
+
+	$username=$_SESSION["username"];
+		
+	$pro1 = mysqli_query($con,"SELECT pname FROM `products` WHERE `username` =  '$username' and `prdate` > 'Current_Date' and pcategory = 'Medicines'");
+	$pro2 = mysqli_query($con,"SELECT pname FROM `products` WHERE `username` =  '$username' and `prdate` > 'Current_Date' and pcategory = 'Foods'");
+	$pro3 = mysqli_query($con,"SELECT pname FROM `products` WHERE `username` =  '$username' and `prdate` > 'Current_Date' and pcategory = 'Groceries'");
+	$pro4 = mysqli_query($con,"SELECT pname FROM `products` WHERE `username` =  '$username' and `prdate` > 'Current_Date' and pcategory = 'Custom Product'");
+	$doc1 = mysqli_query($con,"SELECT dname FROM `documents` WHERE `username` =  '$username' and `drdate` > 'Current_Date' and dcategory = 'Office Documents'");
+	$doc2 = mysqli_query($con,"SELECT dname FROM `documents` WHERE `username` =  '$username' and `drdate` > 'Current_Date' and dcategory = 'Educational'");
+	$doc3 = mysqli_query($con,"SELECT dname FROM `documents` WHERE `username` =  '$username' and `drdate` > 'Current_Date' and dcategory = 'Personal'");
+	$doc4 = mysqli_query($con,"SELECT dname FROM `documents` WHERE `username` =  '$username' and `drdate` > 'Current_Date' and dcategory = 'Custom Documents'");	
+				
 ?>
 
 <!DOCTYPE html>
@@ -34,12 +53,25 @@ if(!$_SESSION["username"])
     <h3 class="title1">Medicines</h3>
     <div class="bar"  >
       <div class="emptybar"></div>
-	  <div class="filledbar"></div>
-	  <p><b>Medicine 1</b></p>
-	  <p><b>Medicine 2</b></p>
-	  <p><b>Medicine 3</b></p>
-	  <p><b>Medicine 4</b></p>
-	  <p><b>Medicine 5</b></p>
+		<div class="filledbar"></div>
+		<?php
+		$row1 = mysqli_fetch_row($pro1);
+		$num = mysqli_num_rows($pro1);
+		
+		if(!$row1){
+			echo "<p>EMPTY</p>";
+		}
+		else{
+			if($num > 5)
+			{
+				$num = 5;
+			}
+		for($i=0;$i<$num;$i++){
+		echo "<p><b>".$row1[$i]."</p></b>";
+		}	
+			}
+		?>
+	 
  </div>
   </div>
   <div class="card">
@@ -47,11 +79,23 @@ if(!$_SESSION["username"])
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>
-	  <p><b>Food 1</b></p>
-	  <p><b>Food 2</b></p>
-	  <p><b>Food 3</b></p>
-	  <p><b>Food 4</b></p>
-	  <p><b>Food 5</b></p>
+	  <?php
+		$row2 = mysqli_fetch_row($pro2);
+		$num = mysqli_num_rows($pro2);
+		
+		if(!$row2){
+			echo "<p>EMPTY</p>";
+		}
+		else{
+			if($num > 5)
+			{
+				$num = 5;
+			}
+		for($i=0;$i<$num;$i++){
+		echo "<p><b>".$row2[$i]."</p></b>";
+		}	
+			}
+		?>
     </div>
   </div>
   
@@ -60,11 +104,23 @@ if(!$_SESSION["username"])
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>
-	  <p><b>Grocery 1</b></p>
-	  <p><b>Grocery 2</b></p>
-	  <p><b>Grocery 3</b></p>
-	  <p><b>Grocery 4</b></p>
-	  <p><b>Grocery 5</b></p>
+	    <?php
+		$row3 = mysqli_fetch_row($pro3);
+		$num = mysqli_num_rows($pro3);
+		
+		if(!$row3){
+			echo "<p>EMPTY</p>";
+		}
+		else{
+			if($num > 5)
+			{
+				$num = 5;
+			}
+		for($i=0;$i<$num;$i++){
+		echo "<p><b>".$row3[$i]."</p></b>";
+		}	
+			}	
+		?>
     </div>
 	</div>
 	 
@@ -73,11 +129,23 @@ if(!$_SESSION["username"])
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>
-	  <p><b>custom 1</b></p>
-	  <p><b>custom 2</b></p>
-	  <p><b>custom 3</b></p>
-	  <p><b>custom 4</b></p>
-	  <p><b>custom 5</b></p>
+	  <?php
+		$row4 = mysqli_fetch_row($pro4);
+		$num = mysqli_num_rows($pro4);
+		
+		if(!$row4){
+			echo "<p>EMPTY</p>";
+		}
+		else{
+			if($num > 5)
+			{
+				$num = 5;
+			}
+		for($i=0;$i<$num;$i++){
+		echo "<p><b>".$row4[$i]."</p></b>";
+		}	
+			}
+		?>
     </div>
   </div>
 	</div>
@@ -89,11 +157,23 @@ if(!$_SESSION["username"])
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>
-	  <p><b>Document 1</b></p>
-	  <p><b>Document 2</b></p>
-	  <p><b>Document 3</b></p>
-	  <p><b>Document 4</b></p>
-	  <p><b>Document 5</b></p>
+	<?php
+		$rowd1 = mysqli_fetch_row($doc1);
+		$num = mysqli_num_rows($doc1);
+		
+		if(!$rowd1){
+			echo "<p>EMPTY</p>";
+		}
+		else{
+			if($num > 5)
+			{
+				$num = 5;
+			}
+		for($i=0;$i<$num;$i++){
+		echo "<p><b>".$rowd1[$i]."</p></b>";
+		}	
+			}
+		?>
     </div>
 	</div>
 	<div class="card">
@@ -101,24 +181,48 @@ if(!$_SESSION["username"])
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>
-	  <p><b>Educational 1</b></p>
-	  <p><b>Educational 2</b></p>
-	  <p><b>Educational 3</b></p>
-	  <p><b>Educatinoal 4</b></p>
-	  <p><b>Educational 5</b></p>
+	  <?php
+		$rowd2 = mysqli_fetch_row($doc2);
+		$num = mysqli_num_rows($doc2);
+		
+		if(!$rowd2){
+			echo "<p>EMPTY</p>";
+		}
+		else{
+			if($num > 5)
+			{
+				$num = 5;
+			}
+		for($i=0;$i<$num;$i++){
+		echo "<p><b>".$rowd2[$i]."</p></b>";
+		}	
+			}
+		?>
     </div>
     </div>
 	
 	<div class="card">
-    <h3 class="title1">Category 7</h3>
+    <h3 class="title1">Personal</h3>
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>
-	  <p><b>Product 1</b></p>
-	  <p><b>Product 2</b></p>
-	  <p><b>Product 3</b></p>
-	  <p><b>Product 4</b></p>
-	  <p><b>Product 5</b></p>
+	 <?php
+		$rowd3 = mysqli_fetch_row($doc3);
+		$num = mysqli_num_rows($doc3);
+		
+		if(!$rowd3){
+			echo "<p>EMPTY</p>";
+		}
+		else{
+			if($num > 5)
+			{
+				$num = 5;
+			}
+		for($i=0;$i<$num;$i++){
+		echo "<p><b>".$rowd3[$i]."</p></b>";
+		}	
+			}
+		?>
     </div>
 	</div>
   
@@ -127,11 +231,24 @@ if(!$_SESSION["username"])
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>
-	  <p><b>custom 1</b></p>
-	  <p><b>custom 2</b></p>
-	  <p><b>custom 3</b></p>
-	  <p><b>custom 4</b></p>
-	  <p><b>custom 5</b></p>
+	  <?php
+		$rowd4 = mysqli_fetch_row($doc4);
+		$num = mysqli_num_rows($doc4);
+		
+		if(!$rowd4){
+			echo "<p>EMPTY</p>";
+		}
+		else{
+			if($num > 5)
+			{
+				$num = 5;
+			}
+		for($i=0;$i<$num;$i++){
+		echo "<p><b>".$rowd4[$i]."</p></b>";
+		}	
+			}
+		mysqli_close($con);
+		?>
     </div>
     </div>
   </div>
@@ -157,6 +274,5 @@ if(!$_SESSION["username"])
     <script src="js/main.js"></script>
 </body>
 </html>
-<?php
-		}
+<?php	}}
 ?>
