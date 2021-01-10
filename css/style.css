@@ -118,7 +118,7 @@ figure {
 p {
   margin-bottom: 0px;
   font-size: 15px;
-  color: #FFFFFF; }
+  color: #f2f2f2; }
 
 h2 {
   line-height: 1.66;
@@ -143,21 +143,24 @@ h2 {
    position: fixed;
    z-index: 1000;
    top: 0px;
-   left: 0px;
+   left: .25%;
    right: 0px;
   display:block;
   margin:0;
   overflow: hidden;
-  background-color: #000000;
+  background-color: #FDF8F5;
   position: fixed;
   top: 0;
-  width: 100;
+  height: 50px;
+
+  width: 99.5%;
+border-radius: 10px;
   
 }
 .navbar p {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: #000000;
   text-align: center;
 
   padding: 14px 16px ;
@@ -169,20 +172,34 @@ h2 {
 .navbar a {
   float: right;
   display: block;
-  color: #f2f2f2;
+  color: #000000;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
 }
+.ahover:hover {
+  background: #266150;
+  color: black;
+   height: 50px;
+  border-radius: 10px;
+  opacity: 0.5;
+}
+
+
+
+.navbar2 p {
+  margin-bottom: 0px;
+  font-size: 15px;
+  color: #000000; }
 
 
 .navbar2 {
-margin:0;
+
 overflow: hidden;
-background-color: #000000;
+background-color: #FDF8F5;
 position: relative;
-margin-bottom: 0;
+margin-bottom: 0%;
 margin-top:150px;
 width: 100%;
 height: auto;
@@ -191,8 +208,8 @@ height: auto;
 
  display: block
  margin-bottom: 0;
- pending-bottom:0;
- color: #f2f2f2;
+ pnding-bottom:0;
+ color: #000000;
  text-align: left;
  padding-left: 14 ;
  text-decoration: none;
@@ -202,7 +219,7 @@ font-size: 22px;
  .navbar2 a {
 
  display: block;
- color: #f2f2f2;
+ color: #000000;
  align-items:center;
  text-align: center;
  margin-top:0;
@@ -212,7 +229,7 @@ font-size: 22px;
  font-size: 20px;
  }
 .navbar2 a:hover {
-  background: #ddd;
+  background: #266150;
   color: black;
   opacity: 0.5;
 }
@@ -223,16 +240,20 @@ body {
   color: #222;
   font-weight: 400;
   font-family: 'Montserrat';
-  background-image: url("../images/signup-bg.jpg");
+  background-color:#E8CEBF;
+/* background-image: url("../images/01.jpg");
   background-repeat: no-repeat;
+	background-size: contain;
+background-size: 50% 100%;
   background-size: cover;
   -moz-background-size: cover;
   -webkit-background-size: cover;
   -o-background-size: cover;
   -ms-background-size: cover;
-  background-position: center center;
-  padding:  0;
-   margin:0;}
+  background-position: center center;*/
+  padding:0;
+  margin:0;
+   }
 
 .container
    {
@@ -486,16 +507,20 @@ border-radius: 50%;
 
   .fa:hover {
   opacity: 0.5;
+  
   }
  
 .fa-facebook{
 	margin-left:21%;
+	
 } 
 /*  Css file for catogory cards*/
 * {
         box-sizing: border-box;
     }
-.card-container {
+.card-container { 
+  justify-content:center;
+  align-items:center;
   padding-top:115px;
   margin-left:300px;
   margin-bottom:50px;
@@ -541,9 +566,9 @@ border-radius: 50%;
 
 
 
-.title1 {
+.title1{
   color: white;
-  font-weight: 300;
+ 
   position: absolute;
   left: 20px;
   top: 15px;
@@ -585,7 +610,7 @@ border-radius: 50%;
 .card-container2{   
 	
     scrollbar-color: #17141d #FFF;   
-    width: 98%;
+    width: auto;
 	height: auto;
 	border-radius:20px;
 	overflow-x: auto;
@@ -594,6 +619,7 @@ border-radius: 50%;
     background-color: transparent;
     padding:10px;
 }
+
 
 .card2 {  
 		cursor:pointer;
@@ -607,7 +633,7 @@ border-radius: 50%;
 		flex:0 0 25em;
         flex-direction: column;
         padding: 1.5rem;
-        transition: 0.2s;
+        transition: 0.2s ;
     }
 
 	
@@ -637,7 +663,7 @@ border-radius: 50%;
 		background: rgb(0,154,217);
 		background: linear-gradient(90deg, rgba(0,154,217,1) 0%, rgba(217,147,0,1) 65%, rgba(255,186,0,1) 100%);
 	}
-    .card2:not(:first-child) {
+card2:not(:first-child) {
         margin-left: -130px;
     }
 	 .card2:hover {

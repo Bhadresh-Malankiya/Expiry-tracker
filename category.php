@@ -48,213 +48,241 @@ if(!$_SESSION["username"])
 <?php
 	include('php/navbar.php');
 	?>
- <div class="card-container">
+ <div class="card-container" style=" margin-left:21.5%";>
   <div class="card">
-    <h3 class="title1">Medicines</h3>
+    <h3 class="title1" style="font-size:15px; text-transform:uppercase; font-weight:900;"><b>Medicines</b></h3>
     <div class="bar"  >
       <div class="emptybar"></div>
 		<div class="filledbar"></div>
 		<?php
-		$row1 = mysqli_fetch_row($pro1);
-		$num = mysqli_num_rows($pro1);
-		
-		if(!$row1){
-			echo "<p>EMPTY</p>";
+			 $record1=array();
+		while( $row = mysqli_fetch_assoc($pro1))
+		{
+				$record1[]=$row;
+				
+				
 		}
-		else{
-			if($num > 5)
-			{
-				$num = 5;
-			}
-		for($i=0;$i<$num;$i++){
-		echo "<p><b>".$row1[$i]."</p></b>";
-		}	
-			}
-		?>
+		if (empty($record1))
+		{
+			?><b><p>empty</b></p><?php
+		}
+		else
+		{
+		foreach($record1 as $rec1)
+		{	?>
+<p><?php echo ucfirst($rec1['pname']); ?> </p>
+	
+		<?php	}} ?>
+
+		 
 	 
  </div>
   </div>
   <div class="card">
-    <h3 class="title1">Foods</h3>
+  
+    <h3 class="title1" style="font-size:15px; text-transform:uppercase; font-weight:900;"><b>Foods</b></h3>
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>
 	  <?php
-		$row2 = mysqli_fetch_row($pro2);
-		$num = mysqli_num_rows($pro2);
-		
-		if(!$row2){
-			echo "<p>EMPTY</p>";
+		 $record2=array();
+		while( $row2 = mysqli_fetch_assoc($pro2))
+		{
+				$record2[]=$row2;
+				
+				
 		}
-		else{
-			if($num > 5)
-			{
-				$num = 5;
-			}
-		for($i=0;$i<$num;$i++){
-		echo "<p><b>".$row2[$i]."</p></b>";
-		}	
-			}
-		?>
+			if (empty($record2))
+		{
+		?><b><p>empty</b></p><?php
+		}
+		else
+		{
+		foreach($record2 as $rec2)
+		{	?>
+	<p><?php echo ucfirst($rec2['pname']); ?> </p>
+	
+		<?php	}} ?>
+		
     </div>
   </div>
   
-	<div class="card">
-    <h3 class="title1">Groceries</h3>
-    <div class="bar">
+     <div class="card">
+      <h3 class="title1" style="font-size:15px; text-transform:uppercase; font-weight:900;"><b>groceries</b></h3>
+    <div class="bar"  >
       <div class="emptybar"></div>
-      <div class="filledbar"></div>
-	    <?php
-		$row3 = mysqli_fetch_row($pro3);
-		$num = mysqli_num_rows($pro3);
-		
-		if(!$row3){
-			echo "<p>EMPTY</p>";
+		<div class="filledbar"></div>
+		<?php
+			 $record3=array();
+		while( $row3 = mysqli_fetch_assoc($pro3))
+		{
+				$record3[]=$row3;
+				
+				
 		}
-		else{
-			if($num > 5)
-			{
-				$num = 5;
-			}
-		for($i=0;$i<$num;$i++){
-		echo "<p><b>".$row3[$i]."</p></b>";
-		}	
-			}	
-		?>
-    </div>
-	</div>
+		if (empty($record3))
+		{
+			?><b><p>empty</b></p><?php
+		}
+		else
+		{
+		foreach($record3 as $rec3)
+		{	?>
+	<p><?php echo ucfirst($rec3['pname']); ?> </p>
+	
+		<?php	}} ?>
+
+		
 	 
-	   <div class="card">
-    <h3 class="title1">Custom Products</h3>
-    <div class="bar">
-      <div class="emptybar"></div>
-      <div class="filledbar"></div>
-	  <?php
-		$row4 = mysqli_fetch_row($pro4);
-		$num = mysqli_num_rows($pro4);
-		
-		if(!$row4){
-			echo "<p>EMPTY</p>";
-		}
-		else{
-			if($num > 5)
-			{
-				$num = 5;
-			}
-		for($i=0;$i<$num;$i++){
-		echo "<p><b>".$row4[$i]."</p></b>";
-		}	
-			}
-		?>
-    </div>
+ </div>
   </div>
-	</div>
-	
-	
-	<div class="card-container" >
-<div class="card">
-    <h3 class="title1">Office Documents</h3>
-    <div class="bar">
-      <div class="emptybar"></div>
-      <div class="filledbar"></div>
-	<?php
-		$rowd1 = mysqli_fetch_row($doc1);
-		$num = mysqli_num_rows($doc1);
-		
-		if(!$rowd1){
-			echo "<p>EMPTY</p>";
-		}
-		else{
-			if($num > 5)
-			{
-				$num = 5;
-			}
-		for($i=0;$i<$num;$i++){
-		echo "<p><b>".$rowd1[$i]."</p></b>";
-		}	
-			}
-		?>
-    </div>
-	</div>
-	<div class="card">
-    <h3 class="title1">Educational</h3>
-    <div class="bar">
-      <div class="emptybar"></div>
-      <div class="filledbar"></div>
-	  <?php
-		$rowd2 = mysqli_fetch_row($doc2);
-		$num = mysqli_num_rows($doc2);
-		
-		if(!$rowd2){
-			echo "<p>EMPTY</p>";
-		}
-		else{
-			if($num > 5)
-			{
-				$num = 5;
-			}
-		for($i=0;$i<$num;$i++){
-		echo "<p><b>".$rowd2[$i]."</p></b>";
-		}	
-			}
-		?>
-    </div>
-    </div>
-	
-	<div class="card">
-    <h3 class="title1">Personal</h3>
-    <div class="bar">
-      <div class="emptybar"></div>
-      <div class="filledbar"></div>
-	 <?php
-		$rowd3 = mysqli_fetch_row($doc3);
-		$num = mysqli_num_rows($doc3);
-		
-		if(!$rowd3){
-			echo "<p>EMPTY</p>";
-		}
-		else{
-			if($num > 5)
-			{
-				$num = 5;
-			}
-		for($i=0;$i<$num;$i++){
-		echo "<p><b>".$rowd3[$i]."</p></b>";
-		}	
-			}
-		?>
-    </div>
-	</div>
-  
   <div class="card">
-    <h3 class="title1">Custom Documents</h3>
+    <h3 class="title1" style="font-size:15px; text-transform:uppercase; font-weight:900;"><b>custom product</b></h3>
     <div class="bar">
       <div class="emptybar"></div>
       <div class="filledbar"></div>
 	  <?php
-		$rowd4 = mysqli_fetch_row($doc4);
-		$num = mysqli_num_rows($doc4);
-		
-		if(!$rowd4){
-			echo "<p>EMPTY</p>";
+		 $record4=array();
+		while( $row4 = mysqli_fetch_assoc($pro4))
+		{
+				$record4[]=$row4;
+				
+				
 		}
-		else{
-			if($num > 5)
-			{
-				$num = 5;
-			}
-		for($i=0;$i<$num;$i++){
-		echo "<p><b>".$rowd4[$i]."</p></b>";
-		}	
-			}
-		mysqli_close($con);
-		?>
-    </div>
+			if (empty($record4))
+		{
+			?><b><p>empty</b></p><?php
+		}
+		else
+		{
+		foreach($record4 as $rec4)
+		{	?>
+<p><?php echo ucfirst($rec4['pname']); ?> </p>
+	
+		<?php	}} ?>
+		
     </div>
   </div>
-   
+   </div>
     
+	
+	 <div class="card-container" style=" margin-left:21.5%";>
+  <div class="card">
+      <h3 class="title1" style="font-size:15px; text-transform:uppercase; font-weight:900;"><b>office document</b></h3>
+    <div class="bar"  >
+      <div class="emptybar"></div>
+		<div class="filledbar"></div>
+		<?php
+			 $record5=array();
+		while( $row5 = mysqli_fetch_assoc($doc1))
+		{
+				$record5[]=$row5;
+				
+				
+		}
+		if (empty($record5))
+		{
+			?><b><p>empty</b></p><?php
+		}
+		else
+		{
+		foreach($record5 as $rec5)
+		{	?>
+	<p><?php echo ucfirst($rec5['dname']); ?> </p>
+	
+		<?php	}} ?>
+
+		
+	 
+ </div>
+  </div>
+  <div class="card">
+      <h3 class="title1" style="font-size:15px; text-transform:uppercase; font-weight:900;"><b>educational</b></h3>
+    <div class="bar">
+      <div class="emptybar"></div>
+      <div class="filledbar"></div>
+	  <?php
+		 $record6=array();
+		while( $row6 = mysqli_fetch_assoc($doc2))
+		{
+				$record6[]=$row6;
+				
+				
+		}
+			if (empty($record6))
+		{
+		?><b><p>empty</b></p><?php
+		}
+		else
+		{
+		foreach($record6 as $rec6)
+		{	?>
+	<p><?php echo ucfirst($rec6['dname']); ?> </p>
+	
+		<?php	}} ?>
+		
+    </div>
+  </div>
+  
+     <div class="card">
+      <h3 class="title1" style="font-size:15px; text-transform:uppercase; font-weight:900;"><b>personal document</b></h3>
+    <div class="bar"  >
+      <div class="emptybar"></div>
+		<div class="filledbar"></div>
+		<?php
+			 $record7=array();
+		while( $row7 = mysqli_fetch_assoc($doc3))
+		{
+				$record7[]=$row7;
+				
+				
+		}
+		if (empty($record7))
+		{
+			?><b><p>empty</b></p><?php
+		}
+		else
+		{
+		foreach($record7 as $rec7)
+		{	?>
+	<p><?php echo ucfirst($rec7['dname']); ?> </p>
+	
+		<?php	}} ?>
+
+		
+	 
+ </div>
+  </div>
+  <div class="card">
+     <h3 class="title1" style="font-size:15px; text-transform:uppercase; font-weight:900;"><b>custom document</b></h3>
+    <div class="bar">
+      <div class="emptybar"></div>
+      <div class="filledbar"></div>
+	  <?php
+		 $record8=array();
+		while( $row8 = mysqli_fetch_assoc($doc4))
+		{
+				$record8[]=$row8;
+				
+				
+		}
+			if (empty($record8))
+		{
+			?><b><p>empty</b></p><?php
+		}
+		else
+		{
+		foreach($record8 as $rec8)
+		{	?>
+	<p><?php echo ucfirst($rec8['dname']); ?> </p>
+	
+		<?php	}} ?>
+		
+    </div>
+  </div>
+   </div>
     
+	
 <div class="navbar2" >
 <p style="text-align: center; margin-bottom: 0pt;"> We hope all your requirements will fullfil with expiry tracker, you can contact us by using below link.</p> 
 
@@ -272,7 +300,7 @@ if(!$_SESSION["username"])
     <!-- JS -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/main.js"></script>
+
 </body>
-</html>
-<?php	}}
-?>
+</html>	
+	<?php }} ?>

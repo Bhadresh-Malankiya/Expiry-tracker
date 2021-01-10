@@ -1,5 +1,5 @@
 <?php
-session_start()
+
 ?>
 <html>
 <head>
@@ -12,16 +12,15 @@ session_start()
 	</head>
 <body>
 <div class="navbar">
-<p > <a href="../Expirytracker/index.html" >Expiry Tracker</a></p>
+<p style="margin-top: -45px; float:left;">
+	<img src="title.png" width="250px" height="20px"> </p>
 
-	<?php 
-	echo " <p>Welcome ,".$_SESSION["username"]."</p>";
-	?>
-<a href='php/logout.php'>Logout</a>	
-<a href="../Expirytracker/view.php">View Reminder </a>
-<a href="../Expirytracker/category.php">Category</a>
-<a href="../Expirytracker/adddocuments.php">Add Documents</a>
-<a href="../Expirytracker/addproducts.php">Add Products</a>
+
+<a class="ahover" href='php/logout.php'>Logout</a>	
+<a class="ahover" href="../Expirytracker/view.php">View Reminder </a>
+<a class="ahover"  href="../Expirytracker/category.php">Category</a>
+<a class="ahover" href="../Expirytracker/adddocuments.php">Add Documents</a>
+<a class="ahover" href="../Expirytracker/addproducts.php">Add Products</a>
 </div>
 	</body>
 </html>

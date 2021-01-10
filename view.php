@@ -15,21 +15,28 @@ if(!$_SESSION["username"])
 	else{	
 	$today=date('y:m:d');
 	// add 3 days to date
-	$thisdays=Date('y:m:01', strtotime('+1 month'));
-	$nextdays=Date('y:m:01', strtotime('+2 month'));	
-	$followingdays=Date('y:m:01', strtotime('+10000 days'));	
+	$thisdays=Date('y:m:t');
+	$thisnextdays=Date('y:m:01', strtotime('+1 month'));
+	$nextdays=Date('y:m:t', strtotime('+1 month ' ));	
+	$followingdays=Date('y:m:d', strtotime('+40 years' ));	
 	$username=$_SESSION["username"];
 	$pro1 = mysqli_query($con,"SELECT `pname`, `pcategory`, `Quantity`, `price`, `pdate`, `pedate`, `prdate`, `pdesc` FROM `products` WHERE `username` =  '$username' AND `prdate` BETWEEN '$today' AND '$thisdays'");
-	$pro2 = mysqli_query($con,"SELECT  `pname`, `pcategory`, `Quantity`, `price`, `pdate`, `pedate`, `prdate`, `pdesc` FROM `products` WHERE username = '$username' AND prdate between '$thisdays' AND '$nextdays'");
-	$pro3 = mysqli_query($con,"SELECT `pname`, `pcategory`, `Quantity`, `price`, `pdate`, `pedate`, `prdate`, `pdesc` FROM `products` WHERE username = '$username' 	AND prdate between '$nextdays' AND '$followingdays' ");
+	$pro2 = mysqli_query($con,"SELECT  `pname`, `pcategory`, `Quantity`, `price`, `pdate`, `pedate`, `prdate`, `pdesc` FROM `products` WHERE username = '$username' AND  `prdate` between '$thisnextdays' AND '$nextdays'");
+	$pro3 = mysqli_query($con,"SELECT `pname`, `pcategory`, `Quantity`, `price`, `pdate`, `pedate`, `prdate`, `pdesc` FROM `products` WHERE username = '$username' 	AND  `prdate` between '$nextdays' AND '$followingdays' ");
 		
 	$doc1 = mysqli_query($con,"SELECT `dname`, `dcategory`, `idate`, `dedate`, `drdate`, `ddesc` FROM `documents`  WHERE `username` =  '$username' AND `drdate` BETWEEN '$today' AND '$thisdays'");
-	$doc2 = mysqli_query($con,"SELECT `dname`, `dcategory`, `idate`, `dedate`, `drdate`, `ddesc` FROM `documents`  WHERE `username` =  '$username' AND `drdate` BETWEEN '$thisdays' AND '$nextdays'");
-	$doc3 = mysqli_query($con,"SELECT `dname`, `dcategory`, `idate`, `dedate`, `drdate`, `ddesc` FROM `documents`  WHERE `username` =  '$username' AND drdate between '$nextdays' AND '$followingdays' ");
+	$doc2 = mysqli_query($con,"SELECT `dname`, `dcategory`, `idate`, `dedate`, `drdate`, `ddesc` FROM `documents`  WHERE `username` =  '$username' AND `drdate` BETWEEN '$thisnextdays' AND '$nextdays'");
+	$doc3 = mysqli_query($con,"SELECT `dname`, `dcategory`, `idate`, `dedate`, `drdate`, `ddesc` FROM `documents`  WHERE `username` =  '$username' AND `drdate` between '$nextdays' AND '$followingdays' ");
 		
 	$count1 = 0;
 	$count2 = 0;
 	$count3 = 0;
+	$record1=array();
+	$record2=array();
+	$record3=array();
+	$record4=array();
+	$record5=array();
+	$record6=array();
 		
 		 
 		while( $row = mysqli_fetch_assoc($pro1))
@@ -38,19 +45,11 @@ if(!$_SESSION["username"])
 				$count1++;
 				
 		}
-		if(!isset($record1)){
-			$record1[] =  array("pname"=>"_____","pcategory"=>"______","Quantity"=>"______","price"=>"________","pdate"=>"_______","pedate"=>"______","prdate"=>"______","pdesc"=>"_____");
-			$count1++;
-		}
 		
 		while( $row = mysqli_fetch_assoc($doc1))
 		{
 				$record2[]=$row;
 				$count1++;
-		}
-		if(!isset($record2)){
-			$record2[] =  array("dname"=>"_____","dcategory"=>"______","idate"=>"______","dedate"=>"______","drdate"=>"______","ddesc"=>"__________");
-			$count1++;
 		}
 		while( $row = mysqli_fetch_assoc($pro2))
 		{
@@ -58,38 +57,51 @@ if(!$_SESSION["username"])
 				$count2++;
 				
 		}
-		if(!isset($record3)){
-			$record3[] =  array("pname"=>"_____","pcategory"=>"______","Quantity"=>"______","price"=>"________","pdate"=>"_______","pedate"=>"______","prdate"=>"______","pdesc"=>"_____");
-			$count2++;
-		}
 		while( $row = mysqli_fetch_assoc($doc2))
 		{
 				$record4[]=$row;
 				$count2++;
 		}
-		if(!isset($record4)){
-			$record4[] =  array("dname"=>"_____","dcategory"=>"______","idate"=>"______","dedate"=>"______","drdate"=>"______","ddesc"=>"_______");
-			$count2++;
-		}
-		while( $row = mysqli_fetch_assoc($pro3))
+			while( $row = mysqli_fetch_assoc($pro3))
 		{
 				$record5[]=$row;
 				$count3++;
 				
 		}
-		if(!isset($record5)){
-			$record5[] =  array("pname"=>"_____","pcategory"=>"______","Quantity"=>"______","price"=>"________","pdate"=>"_______","pedate"=>"______","prdate"=>"______","pdesc"=>"_____");
-			$count3++;
-		}
-		while( $row = mysqli_fetch_assoc($doc3))
+			while( $row = mysqli_fetch_assoc($doc3))
 		{
 				$record6[]=$row;
 				$count3++;
 		}
+		/*if(!isset($record1)){
+			$record1[] =  array("pname"=>"_____","pcategory"=>"______","Quantity"=>"______","price"=>"________","pdate"=>"_______","pedate"=>"______","prdate"=>"______","pdesc"=>"_____");
+			$count1++;
+		}
+		
+		if(!isset($record2)){
+			$record2[] =  array("dname"=>"_____","dcategory"=>"______","idate"=>"______","dedate"=>"______","drdate"=>"______","ddesc"=>"__________");
+			$count1++;
+		}
+		
+		if(!isset($record3)){
+			$record3[] =  array("pname"=>"_____","pcategory"=>"______","Quantity"=>"______","price"=>"________","pdate"=>"_______","pedate"=>"______","prdate"=>"______","pdesc"=>"_____");
+			$count2++;
+		}
+		
+		if(!isset($record4)){
+			$record4[] =  array("dname"=>"_____","dcategory"=>"______","idate"=>"______","dedate"=>"______","drdate"=>"______","ddesc"=>"_______");
+			$count2++;
+		}
+	
+		if(!isset($record5)){
+			$record5[] =  array("pname"=>"_____","pcategory"=>"______","Quantity"=>"______","price"=>"________","pdate"=>"_______","pedate"=>"______","prdate"=>"______","pdesc"=>"_____");
+			$count3++;
+		}
+	
 		if(!isset($record6)){
 			$record6[] =  array("dname"=>"_____","dcategory"=>"______","idate"=>"______","dedate"=>"______","drdate"=>"______","ddesc"=>"_______");
 			$count3++;
-		}
+		}*/
 		mysqli_close($con);
 			
 	?>
@@ -114,11 +126,13 @@ if(!$_SESSION["username"])
 include('php/navbar.php');
 ?>
              
-             <div class="container" style="margin-top: 150px;">
+               <div class="container" style="margin-top: 90px; width:50%">
              <div class="signup-content">
-             
-             <h2 class="form-title">This Months</h2>
+           <header >
+             <h2 class="form-title">This Month</h2>
              <hr>
+			 <br
+			 </header>
              </div>
              </div>
 <div class="card-container2">
@@ -169,7 +183,11 @@ include('php/navbar.php');
     <p><b> Issue Date : </b><?Php echo $rec2['idate'];  ?></p>
     <p><b> Expiry Date : </b><?Php echo $rec2['dedate'];  ?></p>
     <p><b>Description about product :</b><?Php echo $rec2['ddesc'];  ?></p>
-    </div>		
+    
+	</br>
+	</br>
+	</br>
+	</br></div>		
     </div>
 	<?php }	 
 		if($count1 < 8){
@@ -179,22 +197,20 @@ include('php/navbar.php');
             <header class="article-header">
                 <div>
                     <div class="category-title">
-                        Reminder Date : 
-                        <span class="date">_______</span>
+                     
+                        <span class="date"></span>
                     </div>
                 </div>
                 <h2 class="article-title">
-                    ________
+                     empty
+					 
                 </h2>
+				</br>
 				<hr>
 			</header>
 	<div >
-    <p><b> category  : </b>______</p>
-    <p><b> Quantity  : </b>___</p>
-    <p><b> price : </b>_____</p>
-    <p><b> purchase Date : </b>__________</p>
-    <p><b> Expiry Date : </b>__________</p>
-    <p><b>description about product :</b>____________________</p>
+    <p><b> empty </b></p>
+      </br></br></br></br> </br></br></br></br>
     </div>
     </div>
 	<?php }
@@ -202,11 +218,13 @@ include('php/navbar.php');
 	</div>
 	
 
-             <div class="container" style="margin-top: 100px;">
+             <div class="container" style="margin-top: 50px; width:50%">
              <div class="signup-content">
-             
+           <header >
              <h2 class="form-title">Next Month</h2>
              <hr>
+			 <br
+			 </header>
              </div>
              </div>
 <div class="card-container2">
@@ -225,14 +243,16 @@ include('php/navbar.php');
                     <?Php echo $rec3['pname'];  ?>
                 </h2>
 				<hr>
+				
 			</header>
 			<div >
-    <p><b> category  : </b><?Php echo $rec3['pcategory'];  ?></p>
+				 <p><b> category  : </b><?Php echo $rec3['pcategory'];  ?></p>
     <p><b> Quantity  : </b><?Php echo $rec3['Quantity'];  ?></p>
     <p><b> price : </b><?Php echo $rec3['price'];  ?></p>
     <p><b> purchase Date : </b><?Php echo $rec3['pdate'];  ?></p>
     <p><b> Expiry Date : </b><?Php echo $rec3['pedate'];  ?></p>
     <p><b>description about product :</b><?Php echo $rec3['pdesc'];  ?></p>
+	
     </div>		
         </div>
 	<?php }
@@ -258,7 +278,11 @@ include('php/navbar.php');
     <p><b> Issue Date : </b><?Php echo $rec4['idate'];  ?></p>
     <p><b> Expiry Date : </b><?Php echo $rec4['dedate'];  ?></p>
     <p><b>Description about product :</b><?Php echo $rec4['ddesc'];  ?></p>
-    </div>		
+    </br>
+	</br>
+	</br>
+	</br>
+	</div>		
     </div>
 	
 	<?php }	 
@@ -269,34 +293,34 @@ include('php/navbar.php');
 	<div class="card2">
             <header class="article-header">
                 <div>
-                    <div class="category-title">
-                        Reminder Date : 
-                        <span class="date">_______</span>
+                   <div class="category-title">
+                     
+                        <span class="date"></span>
                     </div>
                 </div>
                 <h2 class="article-title">
-                    ________
+                     empty
+					 
                 </h2>
+				</br>
 				<hr>
 			</header>
-	<div>
-    <p><b> Category  : </b>______</p>
-    <p><b> Quantity  : </b>___</p>
-    <p><b> Price : </b>_____</p>
-    <p><b> Purchase Date : </b>__________</p>
-    <p><b> Expiry Date : </b>__________</p>
-    <p><b>Description about product :</b>____________________</p>
+	<div >
+    <p><b> empty </b></p>
+      </br></br></br></br> </br></br></br></br>
     </div>
     </div>
 	<?php }
 		}?>
 </div>
 
-               <div class="container" style="margin-top: 100px;">
+                <div class="container" style="margin-top: 50px; width:50%">
              <div class="signup-content">
-             
-             <h2 class="form-title">Following Months</h2>
+           <header >
+             <h2 class="form-title">following Month</h2>
              <hr>
+			 <br
+			 </header>
              </div>
              </div>
  <div class="card-container2">
@@ -342,11 +366,15 @@ include('php/navbar.php');
 				<hr>
 			</header>
 
-	<div>
+	<div style="padding-top:0";>
     <p><b> Category  : </b><?Php echo $rec6['dcategory'];  ?></p>
     <p><b> Issue Date : </b><?Php echo $rec6['idate'];  ?></p>
     <p><b> Expiry Date : </b><?Php echo $rec6['dedate'];  ?></p>
     <p><b>Description about product :</b><?Php echo $rec6['ddesc'];  ?></p>
+	</br>
+	</br>
+	</br>
+	</br>
     </div>		
     </div>
 	
@@ -358,7 +386,7 @@ for($i=0;$i<(8-$count3);$i++){
 	<div class="card2">
             <header class="article-header">
                 <div>
-                    <div class="category-title">
+                  <!--  <div class="category-title">
                         Reminder Date : 
                         <span class="date">_______</span>
                     </div>
@@ -368,13 +396,31 @@ for($i=0;$i<(8-$count3);$i++){
                 </h2>
 				<hr>
 			</header>
-	<div>
+
+	<div style=" padding-top:0";>
     <p><b> category  : </b>______</p>
     <p><b> Quantity  : </b>___</p>
     <p><b> price : </b>_____</p>
     <p><b> purchase Date : </b>__________</p>
     <p><b> Expiry Date : </b>__________</p>
     <p><b>description about product :</b>____________________</p>
+    </div>
+    </div>-->
+	 <div class="category-title">
+                     
+                        <span class="date"></span>
+                    </div>
+                </div>
+                <h2 class="article-title">
+                     empty
+					 
+                </h2>
+				</br>
+				<hr>
+			</header>
+	<div >
+    <p><b> empty </b></p>
+      </br></br></br></br> </br></br></br></br>
     </div>
     </div>
 	<?php }
