@@ -8,15 +8,22 @@ if(!$_SESSION["username"])
 	else{
 	$username=$_SESSION["username"];
 	$pname=$_POST["name"];
- 	$pcategory=$_POST["category"];
-	$Quantity=$_POST["quality"];
-    $price=$_POST["price"];
-    $pdate=$_POST["pdate"];
+ 	$pcategory=$_POST["category"];	
+	if($_POST["quality"]==NULL)$Quantity="empty"; else $Quantity=$_POST["quality"];
+	if($_POST["price"]==NULL)$price="empty";else $price=$_POST["price"];
+	if($_POST["pdate"]==NULL)$pdate="empty";else $pdate=$_POST["pdate"];
     $pedate=$_POST["pedate"];
     $prdate=$_POST["prdate"];
-	$pdesc=$_POST["pdescription"];
+	$prdate1=$_POST["prdate1"];
+	$prdate2=$_POST["prdate2"];
+	$prdate3=$_POST["prdate3"];
+	$prdate4=$_POST["prdate4"];	
+	if($_POST["rdetails"]==NULL)$rdetails="empty"; else $rdetails=$_POST["rdetails"];
+	if($_POST["pdescription"]==NULL)$pdesc="empty"; else $pdesc=$_POST["pdescription"];
 
-	$insertquery="INSERT INTO `products`(`username`,`pname`,`pcategory`,`Quantity`,`price`,`pdate`,`pedate`,`prdate`,`pdesc`) VALUES ('$username','$pname','$pcategory','$Quantity','$price','$pdate','$pedate','$prdate','$pdesc')";
+
+
+	$insertquery="INSERT INTO `products`(`username`,`pname`,`pcategory`,`Quantity`,`price`,`pdate`,`pedate`,`prdate`,`prdate1`,`prdate2`,`prdate3`,`prdate4`,  `rdetails`,`pdesc`) VALUES ('$username','$pname','$pcategory','$Quantity','$price','$pdate','$pedate','$prdate','$prdate1','$prdate2','$prdate3','$prdate4','$rdetails','$pdesc')";
 
 	$con = mysqli_connect("localhost","root","","demo");
 	if(!$con)

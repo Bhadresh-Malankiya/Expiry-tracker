@@ -1,11 +1,25 @@
 <?php
+error_reporting (E_ALL ^ E_NOTICE);
 
-	session_start();
-if(!$_SESSION["username"])
+$con = mysqli_connect("localhost","root","","demo");
+	if(!$con)
 	{
-		header('location:index.html');
+		die("Connot connet to Database :" . mysqli_connect_errno());
 	}
-	else{
+    $username=$_GET['username'];
+    $pname=$_GET['pname'];
+    $pcategory=$_GET['pcategory'];
+	$Quantity=$_GET['Quantity'];
+	$price=$_GET['price'];
+    $prdate=$_GET['prdate'];
+ 	$prdate1=$_GET['prdate1'];
+ 	$prdate2=$_GET['prdate2'];
+ 	$prdate3=$_GET['prdate3'];
+ 	$prdate4=$_GET['prdate4'];
+	$pdate=$_GET['pdate'];
+	$pedate=$_GET['pedate'];
+	$rdetails=$_GET['rdetails'];
+	$pdesc=$_GET['pdesc'];
 ?>
 
 <!DOCTYPE html>
@@ -38,14 +52,19 @@ if(!$_SESSION["username"])
                 <div class="signup-content">
 					
 					
-                    <form action="php/addp.php" method="POST" id="signup-form" class="signup-form">
+                    <form action="php/edit.php" method="POST" id="signup-form" class="signup-form">
                         <h2 class="form-title">ADD PRODUCTS</h2>
 						<hr> <div class="form-group"><p><b>Enter Name of product</b><b style="color:red;" > *</b></p>
-                            <input type="text" class="form-input" name="name" id="name" placeholder="Product Name" required/>
+                            <input type="text" value="<?php echo "$pname"?>" class="form-input" name="pname" id="name" placeholder="Product Name" required/>
+						
+						<input type="hidden" value="<?php echo "$pname" ?>"  name="pnameold" id="pnameold" d/>
+						<!--<input type="hidden" value="php echo "$username" ?>"  name="username" id="username" d/>-->
+						
+						
                         </div>
                         <div class="form-group"><p><b>Enter category of product</b><b style="color:red;" > *</b></p>
-							<select class="form-input" name="category" required>
-								  <option value="">Select Category</option>
+							<select class="form-input" name="pcategory" required>
+								  <option value="<?php echo "$pcategory"?>"><?php echo "$pcategory"?></option>
 								  <option value="Medicines">Medicines</option>
 								  <option value="Foods">Foods</option>
 								  <option value="Groceries">Groceries</option>
@@ -53,43 +72,32 @@ if(!$_SESSION["username"])
 							</select>
                         </div>
                         <div class="form-group"><p><b>Enter Quantity of product</b></p>
-                        <input type="text" class="form-input" name="quality"  placeholder=" Quantity"/>
+                        <input type="text"  value="<?php echo "$Quantity"?>" class="form-input" name="Quantity"  placeholder=" Quantity"/>
                         </div>
                         <div class="form-group"><p><b>Enter price of product</b></p>
-                        <input type="text" class="form-input" name="price"  placeholder="Price"/>
+                        <input type="text"  value="<?php echo "$price"?>" class="form-input" name="price"  placeholder="Price"/>
                         </div>
                         <div class="form-group"><p><b>Enter purchase Date</b></p>
-                        <input type="date" class="form-input" name="pdate" />
+                        <input type="text"  value="<?php echo "$pdate"?>"  onfocus="(this,type='date')" onblur="(this,type='tex')" placeholder="<?php echo "$pdate"?>" class="form-input" name="pdate"  required/>
+							
                         </div>
                        <div class="form-group"> <p><b>Enter Expiry Date</b><b style="color:red;" > *</b></p>
-                           <input type="date" class="form-input" name="pedate" required/>
+                           <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')"  value="<?php echo "$pedate"?>" placeholder="<?php echo "$pedate"?>" class="form-input" name="pedate" required/>
                        </div>
-                       <div class="form-group" > <p><b>set reminder At least 1 is required Up to 5</b><b style="color:red;" > *</b></p>
-                           <input type="date" class="form-input" name="prdate" required/>
-						   <p id="adddate1"></p>
-						   <p id="adddate2"></p>
-						   <p id="adddate3"></p>
-						   <p id="adddate4"></p>
-						   <p id="maxadddate">
-						   <input type="button"  class="form-submit" onclick = "adddate()" value="+" ></p>
-						   <script>
-							   var i = 1;
-							   function adddate() {  	
-								    document.getElementById("adddate"+ i).innerHTML="<input type='date' class='form-input' name='prdate" + i + "' '/>";
-								   	i++;
-								   if(i == 5){
-									   document.getElementById("maxadddate").innerHTML="";
-								   }
-							   }</script>
-
-                       </div>
+                       <div class="form-group"> <p><b>set reminder</b><b style="color:red;" > *</b></p>
+                           <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')" value="<?php echo "$prdate"?>"  placeholder="<?php echo "$prdate"?>" class="form-input" name="prdate" required/>
+						   <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')" value="<?php echo "$prdate1"?>"  placeholder="<?php echo "$prdate1"?>" class="form-input" name="prdate1" />
+						   <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')" value="<?php echo "$prdate2"?>"  placeholder="<?php echo "$prdate2"?>" class="form-input" name="prdate2" />
+						   <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')" value="<?php echo "$prdate3"?>"  placeholder="<?php echo "$prdate3"?>" class="form-input" name="prdate3" />
+						   <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')" value="<?php echo "$prdate4"?>"  placeholder="<?php echo "$prdate4"?>" class="form-input" name="prdate4" />
+                       </div>  
 						
 						 <div class="form-group"><p><b>Retailer details</b></p>
-                        <input type="text" class="form-input" name="rdetails" placeholder="Retailer details"/>
+                        <input type="text"  value="<?php echo "$rdetails"?>" class="form-input" name="rdetails" placeholder="Retailer details"/>
                         </div>
 						
                         <div class="form-group"><p><b>Enter description about product</b></p>
-                        <input type="text" class="form-input" name="pdescription" placeholder="Dscription" />
+                        <input type="text"  value="<?php echo "$pdesc"?>" class="form-input" name="pdesc" placeholder="Dscription" />
                         </div>
                         
                         <div class="form-group">
@@ -104,6 +112,7 @@ if(!$_SESSION["username"])
         </section>
 
     </div>
+
 <div class="navbar2" >
 <p style="text-align: center; margin-bottom: 0pt;"> We hope all your requirements will fullfil with expiry tracker, you can contact us by using below link.</p> 
 
@@ -122,4 +131,3 @@ if(!$_SESSION["username"])
     <script src="js/main.js"></script>
 </body>
 </html>
-<?php } ?>

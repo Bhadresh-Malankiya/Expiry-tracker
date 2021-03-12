@@ -20,45 +20,49 @@
 <body>
 
 <div class="navbar">
-<p style="margin-top:0;"><a href="../index.html"> Expiry tracker</a></p>
+<a style="margin-top: -45px; float:left;" href="index.html">
+ <img src="../title.png" width="250px" height="20px"> </a>
+
   <a href="../singup.html">Singup</a>
 <a href="../login.php">Login</a>
 </div>
-<?php
-	switch($_SERVER['HTTP_REFERER']){
-		case "http://localhost/Expirytracker/login.php":
-			$msg = "We are logging you in...";
-			break;
-		case "http://localhost/Expirytracker/logout.php":
-			$msg = "We are logging you out...";
-				break;
-		case "http://localhost/Expirytracker/addproducts.php":
-			$msg = "Adding product...";
-			break;
-		case "http://localhost/Expirytracker/adddocuments.php":
-			$msg = "Adding Document..";
-			break;
-		default:
-			$msg = "Loading page...";
-				break;
-			
-	}
-	echo "<h2 style='margin-top:10%; font-size: 30px; margin-left:15px;'> ".$msg."</h2>"
 	
+<?php
+ switch($_SERVER['HTTP_REFERER']){
+  case "/Verify.php":
+   $msg = "We are logging you in...";
+   break;
+  case "../logout.php":
+   $msg = "We are logging you out...";
+    break;
+  case "../addproducts.php":
+   $msg = "Adding product...";
+   break;
+  case "../adddocuments.php":
+   $msg = "Adding Document..";
+   break;
+  default:
+   $msg = "Loading page...";
+    break;
+   
+ }
+ echo "<h2 style='margin-top:10%; font-size: 30px; margin-left:15px; color:#000000;'> ".$msg."</h2>"
+ 
 ?>
-		<svg version="1.1" id="L2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  <svg version="1.1" id="L2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
   viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" style="width: 100px;
   height: 100px;
   margin: 20px;
   display:inline-block;
   align-items:center;
 
-	margin-left:46.5%;
-	background-color: #000000;
-	border:groove #000000;
-	border-radius: 50%;">
-<circle fill="none" stroke="#fff" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="48"/>
-<line fill="none" stroke-linecap="round" stroke="#fff" stroke-width="4" stroke-miterlimit="10" x1="50" y1="50" x2="85" y2="50.5">
+ margin-left:46.5%;
+ background-color: #FFFFFF;
+ border:groove #000000;
+border:3px solid black;
+ border-radius: 50%;">
+<circle fill="none" stroke="#000" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="48"/>
+<line fill="none" stroke-linecap="round" stroke="#000" stroke-width="4" stroke-miterlimit="10" x1="50" y1="50" x2="85" y2="50.5">
   <animateTransform 
        attributeName="transform" 
        dur="2s"
@@ -67,7 +71,7 @@
        to="360 50 50"
        repeatCount="indefinite" />
 </line>
-<line fill="none" stroke-linecap="round" stroke="#fff" stroke-width="4" stroke-miterlimit="10" x1="50" y1="50" x2="49.5" y2="74">
+<line fill="none" stroke-linecap="round" stroke="#000" stroke-width="4" stroke-miterlimit="10" x1="50" y1="50" x2="49.5" y2="74">
   <animateTransform 
        attributeName="transform" 
        dur="15s"
@@ -77,8 +81,8 @@
        repeatCount="indefinite" />
 </line>
 </svg>
-	
-	
+ 
+ 
 
 
     

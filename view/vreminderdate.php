@@ -4,7 +4,7 @@
 	
 if(!$_SESSION["username"])
 	{
-		header('location:index.html');
+		header('location:../index.html');
 	}
 	else{
 	$con = mysqli_connect("localhost","root","","demo");
@@ -119,41 +119,18 @@ if(!$_SESSION["username"])
 
     <!-- Main css -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   <link rel="stylesheet" href="css/style.css">
-<style type="text/css">
-	
-	.clickme {
-    background-color: #EEEEEE;
-    padding: 8px 20px;
-    text-decoration:none;
-    
-    border-radius:1000px;
-    color: #10a2ff;
-    cursor:pointer;
-}
+   <link rel="stylesheet" href="../css/style.css">
 
-
-#edit {
-    background-color:#fffffff;
-    color: #000000;
-}
-
-#edit:hover {
-    background-color:#313131;
-    color: #FFFFFF;
-
-}
-	</style>
 	</head>
 <body>
 <?php
-include('php/navbar.php');
+include('../php/navbar.php');
 ?>
              
                <div class="container" style="margin-top: 90px; width:50%">
              <div class="signup-content">
            <header >
-             <h2 class="form-title">This Month</h2>
+             <h2 class="form-title">Reminder date of current Month</h2>
              <hr>
 			   </br>
 			 </header>
@@ -184,7 +161,7 @@ include('php/navbar.php');
 	<p><b>Retailer details : </b><?Php echo $rec1['rdetails'];?></p>
 				<p><b>Description about product : </b><?Php echo $rec1['pdesc'];?></p></br>
 				
-<a id="edit" class="clickme"  href = 'pedit.php?pname=<?Php echo $rec1['pname'];?>
+<a id="edit" class="clickme"  href = '../pedit.php?pname=<?Php echo $rec1['pname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &pcategory=<?Php echo $rec1['pcategory'];?>
 				    &Quantity=<?Php echo $rec1['Quantity'];?>
@@ -194,7 +171,7 @@ include('php/navbar.php');
 				    &pedate=<?Php echo $rec1['pedate'];?>
 				    &rdetails=<?Php echo $rec1['rdetails'];?>
 				    &pdesc=<?Php echo $rec1['pdesc'];?>'><b>edit</b></a>
-				<a  style="float: right" id="edit" class="clickme"   href = 'php/delete.php?pname=<?Php echo $rec1['pname'];?>
+				<a  style="float: right" id="edit" class="clickme"   href = '../php/delete.php?pname=<?Php echo $rec1['pname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &pcategory=<?Php echo $rec1['pcategory'];?>
 				    &Quantity=<?Php echo $rec1['Quantity'];?>
@@ -229,7 +206,7 @@ include('php/navbar.php');
     <p><b> Issue Date : </b><?Php echo $rec2['idate'];  ?></p>
     <p><b> Expiry Date : </b><?Php echo $rec2['dedate'];  ?></p>
 		<p><b>Description about product : </b><?Php echo $rec2['ddesc'];  ?></p></br>
-    <a id="edit" class="clickme" href = 'dedit.php?dname=<?Php echo $rec2['dname'];?>
+    <a id="edit" class="clickme" href = '../dedit.php?dname=<?Php echo $rec2['dname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &dcategory=<?Php echo $rec2['dcategory'];?>
 				    &idate=<?Php echo $rec2['idate'];?>
@@ -237,7 +214,7 @@ include('php/navbar.php');
 	                &drdate=<?Php echo $rec2['drdate'];?>
 				    &ddesc=<?Php echo $rec2['ddesc'];?>'><b>edit</b></a>
 		
-				<a style="float: right" id="edit" class="clickme"   href = 'php/ddelete.php?dname=<?Php echo $rec2['dname'];?>
+				<a style="float: right" id="edit" class="clickme"   href = '../php/ddelete.php?dname=<?Php echo $rec2['dname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &dcategory=<?Php echo $rec2['dcategory'];?>
 				    &idate=<?Php echo $rec2['idate'];?>
@@ -285,7 +262,7 @@ include('php/navbar.php');
              <div class="container" style="margin-top: 90px; width:50%">
              <div class="signup-content">
            <header >
-             <h2 class="form-title">Next Month</h2>
+             <h2 class="form-title">Reminder date of Next Month</h2>
              <hr>
 			   </br>
 			 </header>
@@ -318,7 +295,7 @@ include('php/navbar.php');
 	<p><b>Retailer details : </b><?Php echo $rec3['rdetails'];  ?></p>
 				<p><b>description about product : </b><?Php echo $rec3['pdesc'];  ?></p></br>
 				
-<a id="edit" class="clickme"   href = 'pedit.php?pname=<?Php echo $rec3['pname'];?>
+<a id="edit" class="clickme"   href = '../pedit.php?pname=<?Php echo $rec3['pname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &pcategory=<?Php echo $rec3['pcategory'];?>
 				    &Quantity=<?Php echo $rec3['Quantity'];?>
@@ -328,7 +305,7 @@ include('php/navbar.php');
 				    &pedate=<?Php echo $rec3['pedate'];?>
 				    &rdetails=<?Php echo $rec3['rdetails'];?>
 				    &pdesc=<?Php echo $rec3['pdesc'];?>'><b>edit</b></a>
-				<a  style="float: right" id="edit" class="clickme"   href = 'php/delete.php?pname=<?Php echo $rec3['pname'];?>
+				<a  style="float: right" id="edit" class="clickme"   href = '../php/delete.php?pname=<?Php echo $rec3['pname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &pcategory=<?Php echo $rec3['pcategory'];?>
 				    &Quantity=<?Php echo $rec3['Quantity'];?>
@@ -363,14 +340,14 @@ include('php/navbar.php');
     <p><b> Issue Date : </b><?Php echo $rec4['idate'];  ?></p>
     <p><b> Expiry Date : </b><?Php echo $rec4['dedate'];  ?></p>
 				<p><b>Description about product : </b><?Php echo $rec4['ddesc'];  ?></p></br>
-      <a  id="edit" class="clickme"    href = 'dedit.php?dname=<?Php echo $rec4['dname'];?>
+      <a  id="edit" class="clickme"    href = '../dedit.php?dname=<?Php echo $rec4['dname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &dcategory=<?Php echo $rec4['dcategory'];?>
 				    &idate=<?Php echo $rec4['idate'];?>
 				    &dedate=<?Php echo $rec4['dedate'];?>
 	                &drdate=<?Php echo $rec4['drdate'];?>
 		 &ddesc=<?Php echo $rec4['ddesc'];?>'><b>edit</b></a>
-				<a  style="float: right" id="edit" class="clickme"   href = 'php/ddelete.php?dname=<?Php echo $rec2['dname'];?>
+				<a  style="float: right" id="edit" class="clickme"   href = '../php/ddelete.php?dname=<?Php echo $rec2['dname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &dcategory=<?Php echo $rec4['dcategory'];?>
 				    &idate=<?Php echo $rec4['idate'];?>
@@ -417,7 +394,7 @@ include('php/navbar.php');
                 <div class="container" style="margin-top: 50px; width:50%">
              <div class="signup-content">
            <header >
-             <h2 class="form-title">following Month</h2>
+             <h2 class="form-title">Reminder date of remaining Month</h2>
              <hr>
 			 <br
 			 </header>
@@ -448,7 +425,7 @@ include('php/navbar.php');
 	<p><b>Retailer details : </b><?Php echo $rec5['rdetails'];  ?></p>
 				<p><b>description about product : </b><?Php echo $rec5['pdesc'];  ?></p></br>
 							
-<a id="edit" class="clickme"  href = 'pedit.php?pname=<?Php echo $rec5['pname'];?>
+<a id="edit" class="clickme"  href = '../pedit.php?pname=<?Php echo $rec5['pname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &pcategory=<?Php echo $rec5['pcategory'];?>
 				    &Quantity=<?Php echo $rec5['Quantity'];?>
@@ -458,7 +435,7 @@ include('php/navbar.php');
 				    &pedate=<?Php echo $rec5['pedate'];?>
 				    &rdetails=<?Php echo $rec5['rdetails'];?>
 				    &pdesc=<?Php echo $rec5['pdesc'];?>'><b>edit</b></a>
-				<a  style="float: right" id="edit" class="clickme"   href = 'php/delete.php?pname=<?Php echo $rec5['pname'];?>
+				<a  style="float: right" id="edit" class="clickme"   href = '../php/delete.php?pname=<?Php echo $rec5['pname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &pcategory=<?Php echo $rec5['pcategory'];?>
 				    &Quantity=<?Php echo $rec5['Quantity'];?>
@@ -493,14 +470,14 @@ include('php/navbar.php');
     <p><b> Issue Date : </b><?Php echo $rec6['idate'];  ?></p>
     <p><b> Expiry Date : </b><?Php echo $rec6['dedate'];  ?></p>
 		<p><b>Description about product : </b><?Php echo $rec6['ddesc'];  ?></p></br>
-		  <a  id="edit" class="clickme"   href = 'dedit.php?dname=<?Php echo $rec6['dname'];?>
+		  <a  id="edit" class="clickme"   href = '../dedit.php?dname=<?Php echo $rec6['dname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &dcategory=<?Php echo $rec6['dcategory'];?>
 				    &idate=<?Php echo $rec6['idate'];?>
 				    &dedate=<?Php echo $rec6['dedate'];?>
 	                &drdate=<?Php echo $rec6['drdate'];?>
 				    &ddesc=<?Php echo $rec6['ddesc'];?>'><b>edit</b></a>
-				<a  style="float: right" id="edit" class="clickme"   href = 'php/ddelete.php?dname=<?Php echo $rec2['dname'];?>
+				<a  style="float: right" id="edit" class="clickme"   href = '../php/ddelete.php?dname=<?Php echo $rec2['dname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &dcategory=<?Php echo $rec6['dcategory'];?>
 				    &idate=<?Php echo $rec6['idate'];?>

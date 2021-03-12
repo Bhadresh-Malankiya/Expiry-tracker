@@ -12,9 +12,13 @@
     $idate=$_POST["idate"];
     $dedate=$_POST["dedate"];
     $drdate=$_POST["drdate"];
+	$drdate1=$_POST["drdate1"];	
+	$drdate2=$_POST["drdate2"];
+	$drdate3=$_POST["drdate3"];
+	$drdate4=$_POST["drdate4"];	
 	$ddesc=$_POST["ddescription"];
 
-	$insertquery="INSERT INTO `documents`(`username`, `dname`, `dcategory`, `idate`, `dedate`, `drdate`, `ddesc`) VALUES ('$username','$dname','$dcategory','$idate','$dedate','$drdate','$ddesc')";
+	$insertquery="INSERT INTO `documents`(`username`, `dname`, `dcategory`, `idate`, `dedate`, `drdate`,`drdate1`,`drdate2`,`drdate3` , `drdate4` , `ddesc`) VALUES ('$username','$dname','$dcategory','$idate','$dedate','$drdate','$drdate1','$drdate2','$drdate3','$drdate4','$ddesc')";
 
 	$con = mysqli_connect("localhost","root","","demo");
 	if(!$con)

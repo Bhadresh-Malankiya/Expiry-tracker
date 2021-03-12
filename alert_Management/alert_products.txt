@@ -1,0 +1,8 @@
+Today--Name--Product Name--Category--Expirydate
+
+20:02:21--ankush--parle cookie--Foods--2021-02-25
+20:02:21--ankush--chips--Foods--2021-04-01
+20:02:2--ankush--cookie--Foods--2021-03-12
+20:02:21--ankush--parle cookie--Foods--2021-02-25
+20:02:21--ankush--chips--Foods--2021-04-01
+20:02:21--ankusH--cookie--Foods--2021-03-12

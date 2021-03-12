@@ -20,9 +20,10 @@ if(!isset($_SESSION["username"])){
 <body>
 
 <div class="navbar">
-<p style="margin-top:0;"><a href="index.html"> Expiry tracker</a></p>
-  <a href="singup.html">Singup</a>
-<a href="login.php">Login</a>
+<a style="margin-top: -45px; float:left;" href="index.html">
+	<img src="title.png" width="250px" height="20px"> </a>
+  <a class="ahover" href="singup.html">Singup</a>
+<a class="ahover" href="login.php">Login</a>
 </div>
 
 

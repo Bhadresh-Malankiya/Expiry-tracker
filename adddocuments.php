@@ -10,20 +10,50 @@ if(!$_SESSION["username"])
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>  
+	
+   
+ 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add Document Page</title>
+	
+ <!-- jQuery JS Includes -->
+ <script type="text/javascript" src="jquery/jquery-1.3.2.js"></script>
+ <script type="text/javascript" src="jquery/ui/ui.core.js"></script>
+ <script type="text/javascript" src="jquery/ui/ui.datepicker.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js"></script>
+
+
+ <!-- jQuery CSS Includes -->
+ <link type="text/css" href="jquery/themes/base/ui.core.css" rel="stylesheet" />
+ <link type="text/css" href="jquery/themes/base/ui.datepicker.css" rel="stylesheet" />
+ <link type="text/css" href="jquery/themes/base/ui.theme.css" rel="stylesheet" />
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css" type="text/css" media="all">
+
+
+
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
-
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript">
+$(function(){
+  $('.datepicker').pickadate();
+});
+
+ </script>
 </head>
+	
 <body>
+
+
 
 <?php
 	include('php/navbar.php');
@@ -55,12 +85,28 @@ if(!$_SESSION["username"])
                         <div class="form-group"><p><b>Enter issue Date</b></p>
                         <input type="date" class="form-input" name="idate" />
                         </div>
-                       <div class="form-group"> <p><b>Enter Due Date</b><b style="color:red;" > *</b></p>
+                       <div class="form-group"> <p><b>Enter expiry Date</b><b style="color:red;" > *</b></p>
                            <input type="date" class="form-input" name="dedate" required/>
                        </div>
                        <div class="form-group"> <p><b>set reminder</b><b style="color:red;" > *</b></p>
-                           <input type="date" class="form-input" name="drdate" required/>
+						  <input type="date" class="form-input" name="drdate" required/>
+						   <p id="adddate1"></p>
+						   <p id="adddate2"></p>
+						   <p id="adddate3"></p>
+						   <p id="adddate4"></p>
+						   <p id="maxadddate">
+						   <input type="button"  class="form-submit" onclick = "adddate()" value="+" ></p>
+						   <script>
+							   var i = 1;
+							   function adddate() {  	
+								    document.getElementById("adddate"+ i).innerHTML="<input type='date' class='form-input' name='drdate" + i + "' '/>";
+								   	i++;
+								   if(i == 5){
+									   document.getElementById("maxadddate").innerHTML="";
+								   }
+							   }</script>
                        </div>
+						
                         <div class="form-group"><p><b>Enter description about document</b></p>
                         <input type="text" class="form-input" name="ddescription" placeholder="Decription" Value="Empty"/>
                         </div>
@@ -83,7 +129,7 @@ if(!$_SESSION["username"])
 
 <a href="https://www.facebook.com/" class="fa fa-facebook"></a> 
 <a href="https://twitter.com" class="fa fa-twitter"></a> 
-<a href="https://wa.me/917359359602" class="fa fa-whatsapp"></a>
+<a href="https://wa.me/" class="fa fa-whatsapp"></a>
 <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
 <a href="https://in.pinterest.com" class="fa fa-pinterest"></a>
 <p style="clear: left; margin-top: 0pt;"></p> <hr>
