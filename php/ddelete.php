@@ -19,12 +19,12 @@ if(!$_SESSION["username"])
 				    $dcategory= $_GET['dcategory'];
 				    $idate= $_GET['idate'];
 				    $dedate= $_GET['dedate'];
-	                $drdate= $_GET['drdate'];
+	                $drdate0= $_GET['drdate0'];
 				    $ddesc= $_GET['ddesc'];
 
 		
 		
-		$deletequery=" DELETE FROM documents WHERE dname='$dname' AND dcategory='$dcategory'  AND idate='$idate' AND dedate='$dedate' AND drdate='$drdate'  AND ddesc='$ddesc'";
+		$deletequery=" DELETE FROM documents WHERE dname='$dname' AND dcategory='$dcategory'  AND idate='$idate' AND dedate='$dedate' AND drdate0='$drdate0'  AND ddesc='$ddesc'";
 		
 		if(!mysqli_query($con, $deletequery))
 		{

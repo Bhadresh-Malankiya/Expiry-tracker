@@ -19,16 +19,14 @@ if(!$_SESSION["username"])
     $pcategory=$_GET['pcategory'];
 	$Quantity=$_GET['Quantity'];
 	$price=$_GET['price'];
-    $prdate=$_GET['prdate']; 
+    $prdate0=$_GET['prdate0']; 
 	$pdate=$_GET['pdate'];
 	$pedate=$_GET['pedate'];
 	$rdetails=$_GET['rdetails'];
 	$pdesc=$_GET['pdesc'];		
 	$username=$_SESSION["username"];
-
 		
-		
-		$deletequery=" DELETE FROM products WHERE pname='$pname' AND pcategory='$pcategory' AND Quantity ='$Quantity' AND price='$price' AND pdate='$pdate' AND pedate='$pedate' AND prdate='$prdate' AND rdetails='$rdetails' AND pdesc='$pdesc'";
+		$deletequery=" DELETE FROM products WHERE pname='$pname' AND pcategory='$pcategory' AND Quantity ='$Quantity' AND price='$price' AND pdate='$pdate' AND pedate='$pedate'  AND rdetails='$rdetails' AND pdesc='$pdesc'";
 		if(!mysqli_query($con, $deletequery))
 		{
 			echo "<b> Server is down try after sometimes... </b>";

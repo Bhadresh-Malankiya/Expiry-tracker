@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2020 at 06:00 AM
+-- Generation Time: Mar 21, 2021 at 05:36 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -33,7 +33,11 @@ CREATE TABLE `documents` (
   `dcategory` varchar(50) NOT NULL,
   `idate` date NOT NULL,
   `dedate` date NOT NULL,
-  `drdate` date NOT NULL,
+  `drdate0` date NOT NULL,
+  `drdate1` date DEFAULT NULL,
+  `drdate2` date DEFAULT NULL,
+  `drdate3` date DEFAULT NULL,
+  `drdate4` date DEFAULT NULL,
   `ddesc` varchar(500) NOT NULL,
   `dcurrent_date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -42,11 +46,16 @@ CREATE TABLE `documents` (
 -- Dumping data for table `documents`
 --
 
-INSERT INTO `documents` (`username`, `dname`, `dcategory`, `idate`, `dedate`, `drdate`, `ddesc`, `dcurrent_date`) VALUES
-('ankush lakhani', 'Presentation 1', 'Office Documents', '2020-10-19', '2020-10-31', '2020-10-29', 'Presentation 1 will present to group 1', '2020-10-20'),
-('ankush lakhani', 'License', 'Personal', '2020-09-16', '2040-08-07', '2038-10-01', 'Renew License in two years', '2020-10-20'),
-('ankush lakhani', 'Domail .net ', 'Custom Documents', '2020-10-13', '2020-11-13', '2020-11-10', 'Hosted on host gator', '2020-10-20'),
-('bhadresh', 'Presentation 1', 'Office Documents', '2020-10-06', '2020-10-29', '2020-10-20', 'Empty', '2020-10-20');
+INSERT INTO `documents` (`username`, `dname`, `dcategory`, `idate`, `dedate`, `drdate0`, `drdate1`, `drdate2`, `drdate3`, `drdate4`, `ddesc`, `dcurrent_date`) VALUES
+('ankush', 'domain', 'Office Documents', '2019-11-01', '2021-03-05', '2021-04-25', NULL, NULL, NULL, NULL, 'sendinblue domain', '2020-11-08'),
+('ankush', 'driving license', 'Personal', '2020-11-04', '2040-05-15', '2040-03-09', NULL, NULL, NULL, NULL, 'renew it fast', '2020-11-24'),
+('ankush', 'Work permit', 'Office Documents', '2020-09-12', '2021-06-19', '2021-02-27', NULL, NULL, NULL, NULL, 'renew it fast', '2021-01-01'),
+('ankush', 'IELTS Exam Results', 'Educational', '2020-12-04', '2022-12-04', '2021-02-06', NULL, NULL, NULL, NULL, 'Empty', '2021-01-01'),
+('ankush', 'income certicate', 'Personal', '2020-12-11', '2023-03-01', '2021-01-02', NULL, NULL, NULL, NULL, 'Renew it in a week', '2021-01-01'),
+('ankush', 'SSL certificates', 'Custom Documents', '2020-12-05', '2023-06-09', '2022-02-01', NULL, NULL, NULL, NULL, 'renew it fast', '2021-01-01'),
+('ankush', 'Passport', 'Personal', '2020-02-01', '2030-02-01', '2029-12-01', NULL, NULL, NULL, NULL, 'renew it fast', '2021-01-01'),
+('ankush', 'Vehicle registration', 'Custom Documents', '2006-05-09', '2021-05-09', '2021-02-18', NULL, NULL, NULL, NULL, 'renew it fast', '2021-01-01'),
+('ankush', '  GameZoneCard                                        ', 'Personal        ', '2020-03-04', '2021-03-31', '2021-03-10', '2021-03-10', '2021-03-04', '0000-00-00', '0000-00-00', '  Renew at Himalaya mall', '2021-03-09');
 
 -- --------------------------------------------------------
 
@@ -62,7 +71,12 @@ CREATE TABLE `products` (
   `price` varchar(20) NOT NULL,
   `pdate` date NOT NULL,
   `pedate` date NOT NULL,
-  `prdate` date NOT NULL,
+  `prdate0` date NOT NULL,
+  `prdate1` date DEFAULT NULL,
+  `prdate2` date DEFAULT NULL,
+  `prdate3` date DEFAULT NULL,
+  `prdate4` date DEFAULT NULL,
+  `rdetails` varchar(500) NOT NULL,
   `pdesc` varchar(500) NOT NULL,
   `Current_Date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -71,15 +85,21 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`username`, `pname`, `pcategory`, `Quantity`, `price`, `pdate`, `pedate`, `prdate`, `pdesc`, `Current_Date`) VALUES
-('', 'ggfgf', 'fggfgf', 'gfgf', 'gfgfgf', '2020-10-09', '2020-10-21', '2020-10-29', 'gfgfffg', '2020-10-10'),
-('pablo', 'toothpaste', 'daily use', '5', '42/-', '2020-10-13', '2020-10-31', '2020-10-30', 'this is stored at cupboard 2', '2020-10-13'),
-('ankush lakhani', 'D-FRESH GEL TUBE', 'medical', '20', '98', '2020-10-07', '2020-10-16', '2020-10-14', 'i baught this for sell and stored at column 26/2', '2020-10-14'),
-('ankush lakhani', 'Lays chips', 'Foods', '5', '10', '2020-10-13', '2020-10-31', '2020-10-29', 'Stored in fridge', '2020-10-20'),
-('ankush lakhani', 'Garnier face wash', 'Groceries', '1', '120', '2020-10-19', '2020-12-30', '2020-12-23', '', '2020-10-20'),
-('ankush lakhani', 'Breads', 'Custom Product', '2', '45', '2020-10-20', '2020-10-31', '2020-10-28', 'Stored in double door fridge', '2020-10-20'),
-('bhadresh', 'D-fresh Gel', 'Medicines', '4', '89 each', '2020-10-01', '2020-10-31', '2020-10-20', 'Stored in block 3', '2020-10-20'),
-('bhadresh', 'Wheat', 'Groceries', '40 kg', '1400 rupees', '2020-10-20', '2020-12-26', '2020-11-13', 'Empty', '2020-10-20');
+INSERT INTO `products` (`username`, `pname`, `pcategory`, `Quantity`, `price`, `pdate`, `pedate`, `prdate0`, `prdate1`, `prdate2`, `prdate3`, `prdate4`, `rdetails`, `pdesc`, `Current_Date`) VALUES
+('ankush', 'parle cookie                    ', 'Foods    ', '55    ', '797    ', '2020-11-25', '2021-02-25', '2021-02-20', NULL, NULL, NULL, NULL, '9462563258    ', 'sell remaining stock', '2020-11-08'),
+('ankush', 'chips                    ', 'Foods    ', '88    ', '22    ', '2020-11-05', '2021-04-01', '2021-02-20', NULL, NULL, NULL, NULL, '8555563258    ', 'in desk no 22', '2020-11-24'),
+('ankush', 'shampoo', 'Groceries', '88', '20', '2020-11-04', '2021-11-26', '2021-01-05', NULL, NULL, NULL, NULL, 'hands2@gmail.com', 'retailer=hands@gmail.com', '2020-11-24'),
+('ankush', 'paracetamol', 'Medicines', '70', '20', '2020-04-01', '2021-12-11', '2021-04-12', NULL, NULL, NULL, NULL, 'madicines@gmail.com', 'desk no.52', '2020-11-24'),
+('ankush', 'milk', 'Custom Product', '88', '61', '2021-01-01', '2021-01-15', '2021-01-05', NULL, NULL, NULL, NULL, '102 maruticomplex, vedroad, surat.', 'Empty', '2020-11-24'),
+('ankush', 'cookie                                        ', 'Foods        ', '55        ', '20        ', '2020-11-10', '2021-03-12', '2021-03-06', NULL, NULL, NULL, NULL, '7562325268        ', 'Empty', '2020-11-24'),
+('lakhani', 'soap', 'Groceries', '851', '20', '2020-10-26', '2021-06-27', '2021-01-02', NULL, NULL, NULL, NULL, '8643169532', 'desk no.555', '2021-01-01'),
+('ankush', 'Hydrocodone', 'Medicines', '53', '79', '2020-08-14', '2021-04-08', '2021-03-02', NULL, NULL, NULL, NULL, '18006 3563 8563', 'empty', '2021-01-01'),
+('ankush', 'Generic Zocor', 'Medicines', '244', '103', '2020-11-14', '2021-06-12', '2021-03-02', NULL, NULL, NULL, NULL, 'empty', 'desk no.023', '2021-01-01'),
+('ankush', 'shaving cream', 'Groceries', '59', '74', '2020-12-11', '2021-04-10', '2021-02-12', NULL, NULL, NULL, NULL, 'shavingcream@sanb.com', 'sell before expiry', '2021-01-01'),
+('ankush', 'cheese                    ', 'Custom Product    ', '244    ', '61    ', '2020-12-05', '2021-03-20', '2021-03-06', NULL, NULL, NULL, NULL, 'b102, jaycomplex, katargam, surat    ', 'empty', '2021-01-01'),
+('ankush', 'shaving cream    ', 'Groceries    ', '591   ', '74    ', '2020-12-11', '2021-04-10', '2021-02-12', NULL, NULL, NULL, NULL, 'shavingcream@sanb.com    ', 'sell before expiry                    ', '2021-02-06'),
+('ankush', 'mask', 'Medicines', '50', '10', '2021-03-30', '2021-03-25', '2021-03-05', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 'nn', 'despti', '2021-03-20'),
+('ankush', 'n-95', 'Medicines', '3', '40', '2021-03-18', '2021-03-30', '2021-03-25', '2021-03-26', '2021-03-27', '0000-00-00', '0000-00-00', '--', '--', '2021-03-20');
 
 -- --------------------------------------------------------
 
@@ -100,11 +120,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password`, `created_at`) VALUES
-(5, 'dipenladva@gmail.com', 'dipen1', 'dipen1', '2020-10-07 17:53:29'),
-(6, 'pablo@gmail.com', 'pablo', 'escobar', '2020-10-13 09:56:19'),
-(8, 'ankushlakhani3@gmail.com', 'ankush lakhani', 'ankush', '2020-10-14 12:29:51'),
-(9, '', '', '', '2020-10-17 11:39:28'),
-(11, 'bhadreshm3418@gmail.com', 'bhadresh', 'bhadresh', '2020-10-20 13:38:08');
+(13, 'ankushlakhani3@gmail.com', 'ankush', 'ankush', '2020-11-04 17:00:12'),
+(14, 'lakhaniankush@gmail.com', 'lakhani', 'lakhani', '2021-01-01 16:23:23');
 
 --
 -- Indexes for dumped tables
@@ -126,7 +143,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

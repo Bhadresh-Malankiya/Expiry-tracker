@@ -25,7 +25,7 @@
 					session_start();
 					$_SESSION['username']=$username;
 					
-					header('refresh: 3; url=../addproducts.php');
+					header('refresh: 3; url=../view/vreminderdate.php');
 					
 				}
 			}

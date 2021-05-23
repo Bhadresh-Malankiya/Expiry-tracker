@@ -77,6 +77,6 @@ if(!isset($_SESSION["username"])){
 </html>
 <?php
 }else{
-	header("location: addproducts.php");
+	header("location: view/vreminderdate.php");
 }
 ?>

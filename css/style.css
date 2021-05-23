@@ -65,7 +65,9 @@ a:focus, a:active {
   -webkit-transition: all 300ms ease 0s;
   -o-transition: all 300ms ease 0s;
   -ms-transition: all 300ms ease 0s; }
-
+button:hover{
+  transition: 0.4s ease-out;
+}
 input, select, textarea {
 	
   background-color: #fff;
@@ -298,6 +300,7 @@ body {
   font-weight: 400;
   font-family: 'Montserrat';
   background-color:#E3E3E3;
+	
 /* background-image: url("../images/01.jpg");
   background-repeat: no-repeat;
 	background-size: contain;

@@ -12,7 +12,7 @@ $con = mysqli_connect("localhost","root","","demo");
 				    $dcategory= $_GET['dcategory'];
 				    $idate= $_GET['idate'];
 				    $dedate= $_GET['dedate'];
-	                $drdate= $_GET['drdate'];	
+	                $drdate0= $_GET['drdate0'];	
 					
 					$drdate1= $_GET['drdate1'];
 					
@@ -76,7 +76,7 @@ $con = mysqli_connect("localhost","root","","demo");
                            <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')"  value="<?php echo "$dedate"?>" placeholder="<?php echo "$dedate"?>"  class="form-input" name="dedate" required/>
                        </div>
                        <div class="form-group"> <p><b>set reminder</b><b style="color:red;" > *</b></p>
-                           <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')"  value="<?php echo "$drdate"?>" placeholder="<?php echo "$drdate"?>"  class="form-input" name="drdate" required/>
+                           <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')"  value="<?php echo "$drdate0"?>" placeholder="<?php echo "$drdate0"?>"  class="form-input" name="drdate0" required/>
 						   <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')"  value="<?php echo "$drdate1"?>" placeholder="<?php echo "$drdate1"?>"  class="form-input" name="drdate1" />
 						   <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')"  value="<?php echo "$drdate2"?>" placeholder="<?php echo "$drdate2"?>"  class="form-input" name="drdate2" />
 						   <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')"  value="<?php echo "$drdate3"?>" placeholder="<?php echo "$drdate3"?>"  class="form-input" name="drdate3" />

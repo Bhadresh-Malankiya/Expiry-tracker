@@ -1,5 +1,6 @@
 
 <?php
+error_reporting (E_ALL ^ E_NOTICE);
 	session_start();
 if(!$_SESSION["username"])
 	{
@@ -13,7 +14,7 @@ if(!$_SESSION["username"])
 	if($_POST["price"]==NULL)$price="empty";else $price=$_POST["price"];
 	if($_POST["pdate"]==NULL)$pdate="empty";else $pdate=$_POST["pdate"];
     $pedate=$_POST["pedate"];
-    $prdate=$_POST["prdate"];
+    $prdate0=$_POST["prdate0"];
 	$prdate1=$_POST["prdate1"];
 	$prdate2=$_POST["prdate2"];
 	$prdate3=$_POST["prdate3"];
@@ -23,7 +24,7 @@ if(!$_SESSION["username"])
 
 
 
-	$insertquery="INSERT INTO `products`(`username`,`pname`,`pcategory`,`Quantity`,`price`,`pdate`,`pedate`,`prdate`,`prdate1`,`prdate2`,`prdate3`,`prdate4`,  `rdetails`,`pdesc`) VALUES ('$username','$pname','$pcategory','$Quantity','$price','$pdate','$pedate','$prdate','$prdate1','$prdate2','$prdate3','$prdate4','$rdetails','$pdesc')";
+	$insertquery="INSERT INTO `products`(`username`,`pname`,`pcategory`,`Quantity`,`price`,`pdate`,`pedate`,`prdate0`,`prdate1`,`prdate2`,`prdate3`,`prdate4`,  `rdetails`,`pdesc`) VALUES ('$username','$pname','$pcategory','$Quantity','$price','$pdate','$pedate','$prdate0','$prdate1','$prdate2','$prdate3','$prdate4','$rdetails','$pdesc')";
 
 	$con = mysqli_connect("localhost","root","","demo");
 	if(!$con)
@@ -40,7 +41,7 @@ if(!$_SESSION["username"])
 		{
 			
 			include("loader.php");
-			header('refresh: 3; url= ../addproducts.php');
+			header('refresh: 3; url= ../view/vreminderdate.php');
 		}
 		mysqli_close($con);
 	}

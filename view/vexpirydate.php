@@ -20,13 +20,13 @@ if(!$_SESSION["username"])
 	$nextdays=Date('y:m:t', strtotime('+1 month ' ));	
 	$followingdays=Date('y:m:d', strtotime('+40 years' ));	
 	$username=$_SESSION["username"];
-	$pro1 = mysqli_query($con,"SELECT `pname`, `pcategory`, `Quantity`, `price`, `pdate`, `pedate`, `prdate`,  `rdetails`, `pdesc` FROM `products` WHERE `username` =  '$username' AND `pedate` BETWEEN '$today' AND '$thisdays'");
-	$pro2 = mysqli_query($con,"SELECT  `pname`, `pcategory`, `Quantity`, `price`, `pdate`, `pedate`, `prdate`,  `rdetails`, `pdesc` FROM `products` WHERE username = '$username' AND  `pedate` between '$thisnextdays' AND '$nextdays'");
-	$pro3 = mysqli_query($con,"SELECT `pname`, `pcategory`, `Quantity`, `price`, `pdate`, `pedate`, `prdate`,  `rdetails`, `pdesc` FROM `products` WHERE username = '$username' 	AND  `pedate` between '$nextdays' AND '$followingdays' ");
+	$pro1 = mysqli_query($con,"SELECT `pname`, `pcategory`, `Quantity`, `price`, `pdate`, `pedate`, `prdate0`, `prdate1`, `prdate2`, `prdate3`, `prdate4`,   `rdetails`, `pdesc` FROM `products` WHERE `username` =  '$username' AND `pedate` BETWEEN '$today' AND '$thisdays'");
+	$pro2 = mysqli_query($con,"SELECT  `pname`, `pcategory`, `Quantity`, `price`, `pdate`, `pedate`, `prdate0`, `prdate1`, `prdate2`, `prdate3`, `prdate4`,   `rdetails`, `pdesc` FROM `products` WHERE username = '$username' AND  `pedate` between '$thisnextdays' AND '$nextdays'");
+	$pro3 = mysqli_query($con,"SELECT `pname`, `pcategory`, `Quantity`, `price`, `pdate`, `pedate`, `prdate0`, `prdate1`, `prdate2`, `prdate3`, `prdate4`,   `rdetails`, `pdesc` FROM `products` WHERE username = '$username' 	AND  `pedate` between '$nextdays' AND '$followingdays' ");
 		
-	$doc1 = mysqli_query($con,"SELECT `dname`, `dcategory`, `idate`, `dedate`, `drdate`, `ddesc` FROM `documents`  WHERE `username` =  '$username' AND `dedate` BETWEEN '$today' AND '$thisdays'");
-	$doc2 = mysqli_query($con,"SELECT `dname`, `dcategory`, `idate`, `dedate`, `drdate`,  `ddesc` FROM `documents`  WHERE `username` =  '$username' AND `dedate` BETWEEN '$thisnextdays' AND '$nextdays'");
-	$doc3 = mysqli_query($con,"SELECT `dname`, `dcategory`, `idate`, `dedate`, `drdate`, `ddesc` FROM `documents`  WHERE `username` =  '$username' AND `dedate` between '$nextdays' AND '$followingdays' ");
+	$doc1 = mysqli_query($con,"SELECT `dname`, `dcategory`, `idate`, `dedate`, `drdate0`, `drdate0`,`drdate1`,`drdate2`,`drdate3`,`drdate4`,`ddesc` FROM `documents`  WHERE `username` =  '$username' AND `dedate` BETWEEN '$today' AND '$thisdays'");
+	$doc2 = mysqli_query($con,"SELECT `dname`, `dcategory`, `idate`, `dedate`, `drdate0`, `drdate0`,`drdate1`,`drdate2`,`drdate3`,`drdate4`, `ddesc` FROM `documents`  WHERE `username` =  '$username' AND `dedate` BETWEEN '$thisnextdays' AND '$nextdays'");
+	$doc3 = mysqli_query($con,"SELECT `dname`, `dcategory`, `idate`, `dedate`, `drdate0`, `drdate0`,`drdate1`,`drdate2`,`drdate3`,`drdate4`,`ddesc` FROM `documents`  WHERE `username` =  '$username' AND `dedate` between '$nextdays' AND '$followingdays' ");
 		
 	$count1 = 0;
 	$count2 = 0;
@@ -74,32 +74,32 @@ if(!$_SESSION["username"])
 				$count3++;
 		}
 		/*if(!isset($record1)){
-			$record1[] =  array("pname"=>"_____","pcategory"=>"______","Quantity"=>"______","price"=>"________","pdate"=>"_______","pedate"=>"______","prdate"=>"______","pdesc"=>"_____");
+			$record1[] =  array("pname"=>"_____","pcategory"=>"______","Quantity"=>"______","price"=>"________","pdate"=>"_______","pedate"=>"______","prdate0"=>"______","pdesc"=>"_____");
 			$count1++;
 		}
 		
 		if(!isset($record2)){
-			$record2[] =  array("dname"=>"_____","dcategory"=>"______","idate"=>"______","dedate"=>"______","drdate"=>"______","ddesc"=>"__________");
+			$record2[] =  array("dname"=>"_____","dcategory"=>"______","idate"=>"______","dedate"=>"______","drdate0"=>"______","ddesc"=>"__________");
 			$count1++;
 		}
 		
 		if(!isset($record3)){
-			$record3[] =  array("pname"=>"_____","pcategory"=>"______","Quantity"=>"______","price"=>"________","pdate"=>"_______","pedate"=>"______","prdate"=>"______","pdesc"=>"_____");
+			$record3[] =  array("pname"=>"_____","pcategory"=>"______","Quantity"=>"______","price"=>"________","pdate"=>"_______","pedate"=>"______","prdate0"=>"______","pdesc"=>"_____");
 			$count2++;
 		}
 		
 		if(!isset($record4)){
-			$record4[] =  array("dname"=>"_____","dcategory"=>"______","idate"=>"______","dedate"=>"______","drdate"=>"______","ddesc"=>"_______");
+			$record4[] =  array("dname"=>"_____","dcategory"=>"______","idate"=>"______","dedate"=>"______","drdate0"=>"______","ddesc"=>"_______");
 			$count2++;
 		}
 	
 		if(!isset($record5)){
-			$record5[] =  array("pname"=>"_____","pcategory"=>"______","Quantity"=>"______","price"=>"________","pdate"=>"_______","pedate"=>"______","prdate"=>"______","pdesc"=>"_____");
+			$record5[] =  array("pname"=>"_____","pcategory"=>"______","Quantity"=>"______","price"=>"________","pdate"=>"_______","pedate"=>"______","prdate0"=>"______","pdesc"=>"_____");
 			$count3++;
 		}
 	
 		if(!isset($record6)){
-			$record6[] =  array("dname"=>"_____","dcategory"=>"______","idate"=>"______","dedate"=>"______","drdate"=>"______","ddesc"=>"_______");
+			$record6[] =  array("dname"=>"_____","dcategory"=>"______","idate"=>"______","dedate"=>"______","drdate0"=>"______","ddesc"=>"_______");
 			$count3++;
 		}*/
 		mysqli_close($con);
@@ -144,7 +144,30 @@ include('../php/navbar.php');
                 <div>
                     <div class="category-title">
                         Reminder Date : 
-                        <span class="date"><?Php echo $rec1['prdate'];  ?></span>
+                        <span class="date"><?Php echo $rec1['prdate0']; 
+							   if(!is_null($rec1['prdate1']))
+									   {
+										   if($rec1['prdate1']!=='0000-00-00' )
+										   {
+											  echo ", ". $rec1['prdate1'].", ";
+
+											  if($rec1['prdate2']!=='0000-00-00'  )
+											   {
+												   echo $rec1['prdate2'].", </br>";
+
+												   if($rec1['prdate3']!=='0000-00-00')
+													{
+														echo $rec1['prdate3'].", ";
+
+													   if($rec1['prdate4']!=='0000-00-00')
+														{
+															 echo $rec1['prdate4'].", ";
+
+														}
+													}
+											   }
+									     }
+									   }?></span>
                     </div>
                 </div>
                 <h2 class="article-title">
@@ -165,8 +188,11 @@ include('../php/navbar.php');
                     &username=<?php echo $_SESSION['username'];?>
 				    &pcategory=<?Php echo $rec1['pcategory'];?>
 				    &Quantity=<?Php echo $rec1['Quantity'];?>
-				    &price=<?Php echo $rec1['price'];?>
-				    &prdate=<?Php echo $rec1['prdate'];?>
+				    &price=<?Php echo $rec1['price'];?>	    &prdate0=<?Php echo $rec1['prdate0'];?>
+				   &prdate1=<?Php echo $rec1['prdate1'];?>
+					&prdate2=<?Php echo $rec1['prdate2'];?>
+					&prdate3=<?Php echo $rec1['prdate3'];?>
+					&prdate4=<?Php echo $rec1['prdate4'];?>
 				    &pdate=<?Php echo $rec1['pdate'];?>
 				    &pedate=<?Php echo $rec1['pedate'];?>
 				    &rdetails=<?Php echo $rec1['rdetails'];?>
@@ -175,8 +201,11 @@ include('../php/navbar.php');
                     &username=<?php echo $_SESSION['username'];?>
 				    &pcategory=<?Php echo $rec1['pcategory'];?>
 				    &Quantity=<?Php echo $rec1['Quantity'];?>
-				    &price=<?Php echo $rec1['price'];?>
-				    &prdate=<?Php echo $rec1['prdate'];?>
+				    &price=<?Php echo $rec1['price'];?>	    &prdate0=<?Php echo $rec1['prdate0'];?>
+				   &prdate1=<?Php echo $rec1['prdate1'];?>
+					&prdate2=<?Php echo $rec1['prdate2'];?>
+					&prdate3=<?Php echo $rec1['prdate3'];?>
+					&prdate4=<?Php echo $rec1['prdate4'];?>
 				    &pdate=<?Php echo $rec1['pdate'];?>
 				    &pedate=<?Php echo $rec1['pedate'];?>
 				    &rdetails=<?Php echo $rec1['rdetails'];?>
@@ -192,7 +221,30 @@ include('../php/navbar.php');
                 <div>
                     <div class="category-title">
                         Reminder Date : 
-                        <span class="date"><?Php echo $rec2['drdate'];  ?></span>
+                        <span class="date"><?Php echo $rec2['drdate0'];  
+							    if(!is_null($rec2['drdate1']))
+									   {
+										   if($rec2['drdate1']!=='0000-00-00' )
+										   {
+											  echo ", ". $rec2['drdate1'].", ";
+
+											  if($rec2['drdate2']!=='0000-00-00'  )
+											   {
+												   echo $rec2['drdate2'].", </br>";
+
+												   if($rec2['drdate3']!=='0000-00-00')
+													{
+														echo $rec2['drdate3'].", ";
+
+													   if($rec2['drdate4']!=='0000-00-00')
+														{
+															 echo $rec2['drdate4'].", ";
+
+														}
+													}
+											   }
+									     }
+									   }?></span>
                     </div>
                 </div>
                 <h2 class="article-title">
@@ -210,16 +262,22 @@ include('../php/navbar.php');
                     &username=<?php echo $_SESSION['username'];?>
 				    &dcategory=<?Php echo $rec2['dcategory'];?>
 				    &idate=<?Php echo $rec2['idate'];?>
-				    &dedate=<?Php echo $rec2['dedate'];?>
-	                &drdate=<?Php echo $rec2['drdate'];?>
+				    &dedate=<?Php echo $rec2['dedate'];?> &drdate0=<?Php echo $rec2['drdate0'];?>
+				     &drdate1=<?Php echo $rec2['drdate1'];?>
+				     &drdate2=<?Php echo $rec2['drdate2'];?>
+				     &drdate3=<?Php echo $rec2['drdate3'];?>
+				     &drdate4=<?Php echo $rec2['drdate4'];?>
 				    &ddesc=<?Php echo $rec2['ddesc'];?>'><b>edit</b></a>
 		
 				<a style="float: right" id="edit" class="clickme"   href = '../php/ddelete.php?dname=<?Php echo $rec2['dname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &dcategory=<?Php echo $rec2['dcategory'];?>
 				    &idate=<?Php echo $rec2['idate'];?>
-				    &dedate=<?Php echo $rec2['dedate'];?>
-	                &drdate=<?Php echo $rec2['drdate'];?>
+				    &dedate=<?Php echo $rec2['dedate'];?> &drdate0=<?Php echo $rec2['drdate0'];?>
+				     &drdate1=<?Php echo $rec2['drdate1'];?>
+				     &drdate2=<?Php echo $rec2['drdate2'];?>
+				     &drdate3=<?Php echo $rec2['drdate3'];?>
+				     &drdate4=<?Php echo $rec2['drdate4'];?>
 				    &ddesc=<?Php echo $rec2['ddesc'];?>'><b>delete</b></a>   
 		
 		
@@ -277,7 +335,30 @@ include('../php/navbar.php');
                 <div>
                     <div class="category-title">
                         Reminder Date : 
-                        <span class="date"><?Php echo $rec3['prdate'];  ?></span>
+                        <span class="date"><?Php echo $rec3['prdate0']; 
+							  if(!is_null($rec3['prdate1']))
+									   {
+										   if($rec3['prdate1']!=='0000-00-00' )
+										   {
+											  echo ", ". $rec3['prdate1'].", ";
+
+											  if($rec3['prdate2']!=='0000-00-00'  )
+											   {
+												   echo $rec3['prdate2'].", </br>";
+
+												   if($rec3['prdate3']!=='0000-00-00')
+													{
+														echo $rec3['prdate3'].", ";
+
+													   if($rec3['prdate4']!=='0000-00-00')
+														{
+															 echo $rec3['prdate4'].", ";
+
+														}
+													}
+											   }
+									     }
+									   }?></span>
                     </div>
                 </div>
                 <h2 class="article-title">
@@ -299,8 +380,11 @@ include('../php/navbar.php');
                     &username=<?php echo $_SESSION['username'];?>
 				    &pcategory=<?Php echo $rec3['pcategory'];?>
 				    &Quantity=<?Php echo $rec3['Quantity'];?>
-				    &price=<?Php echo $rec3['price'];?>
-				    &prdate=<?Php echo $rec3['prdate'];?>
+				    &price=<?Php echo $rec3['price'];?>	    &prdate0=<?Php echo $rec3['prdate0'];?>
+				   &prdate1=<?Php echo $rec3['prdate1'];?>
+					&prdate2=<?Php echo $rec3['prdate2'];?>
+					&prdate3=<?Php echo $rec3['prdate3'];?>
+					&prdate4=<?Php echo $rec3['prdate4'];?>
 				    &pdate=<?Php echo $rec3['pdate'];?>
 				    &pedate=<?Php echo $rec3['pedate'];?>
 				    &rdetails=<?Php echo $rec3['rdetails'];?>
@@ -309,8 +393,11 @@ include('../php/navbar.php');
                     &username=<?php echo $_SESSION['username'];?>
 				    &pcategory=<?Php echo $rec3['pcategory'];?>
 				    &Quantity=<?Php echo $rec3['Quantity'];?>
-				    &price=<?Php echo $rec3['price'];?>
-				    &prdate=<?Php echo $rec3['prdate'];?>
+				    &price=<?Php echo $rec3['price'];?>	    &prdate0=<?Php echo $rec3['prdate0'];?>
+				   &prdate1=<?Php echo $rec3['prdate1'];?>
+					&prdate2=<?Php echo $rec3['prdate2'];?>
+					&prdate3=<?Php echo $rec3['prdate3'];?>
+					&prdate4=<?Php echo $rec3['prdate4'];?>
 				    &pdate=<?Php echo $rec3['pdate'];?>
 				    &pedate=<?Php echo $rec3['pedate'];?>
 				    &rdetails=<?Php echo $rec3['rdetails'];?>
@@ -326,7 +413,30 @@ include('../php/navbar.php');
                 <div>
                     <div class="category-title">
                         Reminder Date : 
-                        <span class="date"><?Php echo $rec4['drdate'];  ?></span>
+                        <span class="date"><?Php echo $rec4['drdate0']; 
+							  if(!is_null($rec4['drdate1']))
+									   {
+										   if($rec4['drdate1']!=='0000-00-00' )
+										   {
+											  echo ", ". $rec4['drdate1'].", ";
+
+											  if($rec4['drdate2']!=='0000-00-00'  )
+											   {
+												   echo $rec4['drdate2'].", </br>";
+
+												   if($rec4['drdate3']!=='0000-00-00')
+													{
+														echo $rec4['drdate3'].", ";
+
+													   if($rec4['drdate4']!=='0000-00-00')
+														{
+															 echo $rec4['drdate4'].", ";
+
+														}
+													}
+											   }
+									     }
+									   }?></span>
                     </div>
                 </div>
                 <h2 class="article-title">
@@ -344,15 +454,21 @@ include('../php/navbar.php');
                     &username=<?php echo $_SESSION['username'];?>
 				    &dcategory=<?Php echo $rec4['dcategory'];?>
 				    &idate=<?Php echo $rec4['idate'];?>
-				    &dedate=<?Php echo $rec4['dedate'];?>
-	                &drdate=<?Php echo $rec4['drdate'];?>
+				    &dedate=<?Php echo $rec4['dedate'];?> &drdate0=<?Php echo $rec4['drdate0'];?>
+				     &drdate1=<?Php echo $rec4['drdate1'];?>
+				     &drdate2=<?Php echo $rec4['drdate2'];?>
+				     &drdate3=<?Php echo $rec4['drdate3'];?>
+				     &drdate4=<?Php echo $rec4['drdate4'];?>
 		 &ddesc=<?Php echo $rec4['ddesc'];?>'><b>edit</b></a>
 				<a  style="float: right" id="edit" class="clickme"   href = '../php/ddelete.php?dname=<?Php echo $rec2['dname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &dcategory=<?Php echo $rec4['dcategory'];?>
 				    &idate=<?Php echo $rec4['idate'];?>
-				    &dedate=<?Php echo $rec4['dedate'];?>
-	                &drdate=<?Php echo $rec4['drdate'];?>
+				    &dedate=<?Php echo $rec4['dedate'];?> &drdate0=<?Php echo $rec4['drdate0'];?>
+				     &drdate1=<?Php echo $rec4['drdate1'];?>
+				     &drdate2=<?Php echo $rec4['drdate2'];?>
+				     &drdate3=<?Php echo $rec4['drdate3'];?>
+				     &drdate4=<?Php echo $rec4['drdate4'];?>
 				    &ddesc=<?Php echo $rec4['ddesc'];?>'><b>delete</b></a>    
 				
 	</br>
@@ -408,7 +524,30 @@ include('../php/navbar.php');
                 <div>
                     <div class="category-title">
                         Reminder Date : 
-                        <span class="date"><?Php echo $rec5['prdate'];  ?></span>
+                        <span class="date"><?Php echo $rec5['prdate0'];  
+							  if(!is_null($rec5['prdate1']))
+									   {
+										   if($rec5['prdate1']!=='0000-00-00' )
+										   {
+											  echo ", ". $rec5['prdate1'].", ";
+
+											  if($rec5['prdate2']!=='0000-00-00'  )
+											   {
+												   echo $rec5['prdate2'].", </br>";
+
+												   if($rec5['prdate3']!=='0000-00-00')
+													{
+														echo $rec5['prdate3'].", ";
+
+													   if($rec5['prdate4']!=='0000-00-00')
+														{
+															 echo $rec5['prdate4'].", ";
+
+														}
+													}
+											   }
+									     }
+									   }?></span>
                     </div>
                 </div>
                 <h2 class="article-title">
@@ -429,8 +568,11 @@ include('../php/navbar.php');
                     &username=<?php echo $_SESSION['username'];?>
 				    &pcategory=<?Php echo $rec5['pcategory'];?>
 				    &Quantity=<?Php echo $rec5['Quantity'];?>
-				    &price=<?Php echo $rec5['price'];?>
-				    &prdate=<?Php echo $rec5['prdate'];?>
+				    &price=<?Php echo $rec5['price'];?>	    &prdate0=<?Php echo $rec5['prdate0'];?>
+				   &prdate1=<?Php echo $rec5['prdate1'];?>
+					&prdate2=<?Php echo $rec5['prdate2'];?>
+					&prdate3=<?Php echo $rec5['prdate3'];?>
+					&prdate4=<?Php echo $rec5['prdate4'];?>
 				    &pdate=<?Php echo $rec5['pdate'];?>
 				    &pedate=<?Php echo $rec5['pedate'];?>
 				    &rdetails=<?Php echo $rec5['rdetails'];?>
@@ -439,8 +581,11 @@ include('../php/navbar.php');
                     &username=<?php echo $_SESSION['username'];?>
 				    &pcategory=<?Php echo $rec5['pcategory'];?>
 				    &Quantity=<?Php echo $rec5['Quantity'];?>
-				    &price=<?Php echo $rec5['price'];?>
-				    &prdate=<?Php echo $rec5['prdate'];?>
+				    &price=<?Php echo $rec5['price'];?>	    &prdate0=<?Php echo $rec5['prdate0'];?>
+				   &prdate1=<?Php echo $rec5['prdate1'];?>
+					&prdate2=<?Php echo $rec5['prdate2'];?>
+					&prdate3=<?Php echo $rec5['prdate3'];?>
+					&prdate4=<?Php echo $rec5['prdate4'];?>
 				    &pdate=<?Php echo $rec5['pdate'];?>
 				    &pedate=<?Php echo $rec5['pedate'];?>
 				    &rdetails=<?Php echo $rec5['rdetails'];?>
@@ -456,7 +601,30 @@ include('../php/navbar.php');
                 <div>
                     <div class="category-title">
                         Reminder Date : 
-                        <span class="date"><?Php echo $rec6['drdate'];  ?></span>
+                        <span class="date"><?Php echo $rec6['drdate0']; 
+							  if(!is_null($rec6['drdate1']))
+									   {
+										   if($rec6['drdate1']!=='0000-00-00' )
+										   {
+											  echo ", ". $rec6['drdate1'].", ";
+
+											  if($rec6['drdate2']!=='0000-00-00'  )
+											   {
+												   echo $rec6['drdate2'].", </br>";
+
+												   if($rec6['drdate3']!=='0000-00-00')
+													{
+														echo $rec6['drdate3'].", ";
+
+													   if($rec6['drdate4']!=='0000-00-00')
+														{
+															 echo $rec6['drdate4'].", ";
+
+														}
+													}
+											   }
+									     }
+									   }?></span>
                     </div>
                 </div>
                 <h2 class="article-title">
@@ -474,15 +642,21 @@ include('../php/navbar.php');
                     &username=<?php echo $_SESSION['username'];?>
 				    &dcategory=<?Php echo $rec6['dcategory'];?>
 				    &idate=<?Php echo $rec6['idate'];?>
-				    &dedate=<?Php echo $rec6['dedate'];?>
-	                &drdate=<?Php echo $rec6['drdate'];?>
+				    &dedate=<?Php echo $rec6['dedate'];?> &drdate0=<?Php echo $rec6['drdate0'];?>
+				     &drdate1=<?Php echo $rec6['drdate1'];?>
+				     &drdate2=<?Php echo $rec6['drdate2'];?>
+				     &drdate3=<?Php echo $rec6['drdate3'];?>
+				     &drdate4=<?Php echo $rec6['drdate4'];?>
 				    &ddesc=<?Php echo $rec6['ddesc'];?>'><b>edit</b></a>
 				<a  style="float: right" id="edit" class="clickme"   href = '../php/ddelete.php?dname=<?Php echo $rec2['dname'];?>
                     &username=<?php echo $_SESSION['username'];?>
 				    &dcategory=<?Php echo $rec6['dcategory'];?>
 				    &idate=<?Php echo $rec6['idate'];?>
-				    &dedate=<?Php echo $rec6['dedate'];?>
-	                &drdate=<?Php echo $rec6['drdate'];?>
+				    &dedate=<?Php echo $rec6['dedate'];?> &drdate0=<?Php echo $rec6['drdate0'];?>
+				     &drdate1=<?Php echo $rec6['drdate1'];?>
+				     &drdate2=<?Php echo $rec6['drdate2'];?>
+				     &drdate3=<?Php echo $rec6['drdate3'];?>
+				     &drdate4=<?Php echo $rec6['drdate4'];?>
 				    &ddesc=<?Php echo $rec6['ddesc'];?>'><b>delete</b></a>   
 		
 	</br>

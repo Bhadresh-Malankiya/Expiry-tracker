@@ -11,7 +11,7 @@ $con = mysqli_connect("localhost","root","","demo");
     $pcategory=$_GET['pcategory'];
 	$Quantity=$_GET['Quantity'];
 	$price=$_GET['price'];
-    $prdate=$_GET['prdate'];
+    $prdate0=$_GET['prdate0'];
  	$prdate1=$_GET['prdate1'];
  	$prdate2=$_GET['prdate2'];
  	$prdate3=$_GET['prdate3'];
@@ -20,6 +20,7 @@ $con = mysqli_connect("localhost","root","","demo");
 	$pedate=$_GET['pedate'];
 	$rdetails=$_GET['rdetails'];
 	$pdesc=$_GET['pdesc'];
+
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +86,7 @@ $con = mysqli_connect("localhost","root","","demo");
                            <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')"  value="<?php echo "$pedate"?>" placeholder="<?php echo "$pedate"?>" class="form-input" name="pedate" required/>
                        </div>
                        <div class="form-group"> <p><b>set reminder</b><b style="color:red;" > *</b></p>
-                           <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')" value="<?php echo "$prdate"?>"  placeholder="<?php echo "$prdate"?>" class="form-input" name="prdate" required/>
+                           <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')" value="<?php echo "$prdate0"?>"  placeholder="<?php echo "$prdate0"?>" class="form-input" name="prdate0" required/>
 						   <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')" value="<?php echo "$prdate1"?>"  placeholder="<?php echo "$prdate1"?>" class="form-input" name="prdate1" />
 						   <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')" value="<?php echo "$prdate2"?>"  placeholder="<?php echo "$prdate2"?>" class="form-input" name="prdate2" />
 						   <input type="text" onfocus="(this,type='date')" onblur="(this,type='tex')" value="<?php echo "$prdate3"?>"  placeholder="<?php echo "$prdate3"?>" class="form-input" name="prdate3" />

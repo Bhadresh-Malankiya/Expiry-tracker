@@ -1,4 +1,5 @@
 <?php
+error_reporting (E_ALL ^ E_NOTICE);
 $con=mysqli_connect("localhost","root","","demo");
 if(!$con)
 {
@@ -7,8 +8,13 @@ if(!$con)
 else
 {
 	$today = date('d:m:y');
-	$queryp = mysqli_query($con,"select * from products where prdate = current_date OR prdate1 = current_date OR prdate2 = current_date OR prdate3 = current_date OR prdate4 = current_date");
-	$queryd = mysqli_query($con,"select * from documents where drdate = current_date OR drdate1 = current_date OR drdate2 = current_date OR drdate3 = current_date OR drdate4 = current_date");	
+
+	$queryp = mysqli_query($con,"select * from products where prdate0 = current_date  AND flag0=0 OR prdate1 = current_date  AND flag0=0 OR prdate2  = current_date  AND flag2=0 OR prdate3 = current_date  AND flag3=0 OR prdate4 = current_date  AND flag4=0");
+	$queryd = mysqli_query($con,"select * from documents where drdate0 = current_date AND flag0=0 OR drdate1 = current_date AND flag1=0 OR drdate2 = current_date AND flag2=0 OR drdate3 = current_date AND flag3=0 OR drdate4 = current_date AND flag4=0");	
+	
+	$querypold = mysqli_query($con,"select * from products where prdate0 < current_date AND flag0=0 OR prdate1 < current_date AND flag1=0 OR prdate2 < current_date AND flag2=0 OR prdate3 < current_date AND flag3=0 OR prdate4 < current_date AND flag4=0");
+	$querydold = mysqli_query($con,"select * from documents where drdate0 < current_date AND flag0=0 OR drdate1 < current_date AND flag1=0 OR drdate2 < current_date AND flag2=0 OR drdate3 < current_date AND flag3=0 OR drdate4 < current_date AND flag4=0");	
+	
 	$result1=array();
 	$result2=array();
 	$count=0;
@@ -16,7 +22,15 @@ else
 	{
 		$result1[]=$row;
 	}
+	while($row = mysqli_fetch_assoc($querypold))
+	{
+		$result1[]=$row;
+	}
 	while($row = mysqli_fetch_assoc($queryd))
+	{
+		$result2[]=$row;
+	}
+	while($row = mysqli_fetch_assoc($querydold))
 	{
 		$result2[]=$row;
 	}
@@ -28,7 +42,35 @@ else
 	{
 		foreach($result1 as $rec1)
 		{	
-			$count++;
+			if(!is_null($rec1['prdate1']))
+									   {
+										   if($rec1['prdate0']!=='0000-00-00' )
+										   {
+											  $prdates[]= $rec1['prdate0'];
+
+											  if($rec1['prdate1']!=='0000-00-00'  )
+											   {
+												   $prdates[]= $rec1['prdate1'];;
+
+												   if($rec1['prdate2']!=='0000-00-00')
+													{
+														 $prdates[]= $rec1['prdate2'];;
+
+													   if($rec1['prdate3']!=='0000-00-00')
+														{
+															  $prdates[]= $rec1['prdate3'];;
+
+															if($rec1['prdate4']!=='0000-00-00')
+															{
+															  $prdates[]= $rec1['prdate4'];;
+
+															}
+														}
+													}
+											   }
+									     }
+									   }
+			
 			$username1= $rec1['username'];
 			$querymail1 = mysqli_query($con,"select email from users left join products on(users.username=products.username) where users.username = '$username1'");
 			$row1 = mysqli_fetch_row($querymail1);
@@ -60,9 +102,15 @@ else
 			</tr>
 			
 			<tr>
+				<td>reminder dates :</td>
+				<td><b>'.$prdates['0'].' '.$prdates['1'].' '.$prdates['2'].' '.$prdates['3'].' '.$prdates['4'].'</b></br></td>
+			</tr>
+			
+			<tr>
 				<td>Purchase date :</td>
 				<td><b>'.$rec1['pdate'].'</b></br></td>
 			</tr>
+			
 			
 			<tr> 
                 <td>price :</td>
@@ -85,13 +133,43 @@ else
 				 <b>Expiry Tracker</b>
 				<footer> © all rights reserved by Expiry tracker</footer>
 				</div> ';
-			
+			unset($prdates);
 			$headers  = 'MIME-Version: 1.0' . "\r\n";
             $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
             $headers .= "From: expiry tracker <notify.expirytracker@gmail.com>" . "\r\n" .'Reply-To: notify.expirytracker@gmail.com' . "\r\n" .'X-Mailer: PHP/';  
 			if(mail($to_email1, $subject1, $body1, $headers))
 			{
-				echo"mail sended to <b>".$to_email1.".</b> </br>";
+				$count++;
+				$pnamesend=$rec1['pname'];
+				
+							$editquery0=" UPDATE products SET flag0=1 WHERE
+				username= '$username1' AND pname = '$pnamesend' AND  prdate0 <= current_date AND flag0=0 ";
+
+				$editquery1=" UPDATE products SET flag1=1 WHERE
+				username= '$username1' AND pname=  '$pnamesend' AND  prdate1 <= current_date AND flag1=0";
+
+				$editquery2=" UPDATE products SET flag2=1 WHERE
+				username= '$username1' AND pname=  '$pnamesend' AND  prdate2 <= current_date AND flag2=0";
+
+				$editquery3=" UPDATE products SET flag3=1 WHERE
+				username= '$username1' AND pname=  '$pnamesend' AND  prdate3 <= current_date AND flag3=0";
+
+				$editquery4=" UPDATE products SET flag4=1 WHERE
+				username= '$username1' AND pname=  '$pnamesend' AND  prdate4 <= current_date AND flag4=0";
+				
+				
+				mysqli_query($con, $editquery0);
+				mysqli_query($con, $editquery1);
+				mysqli_query($con, $editquery2);
+				mysqli_query($con, $editquery3);
+				mysqli_query($con, $editquery4);
+                unset($pnamesend);
+				unset($editquery0);
+				unset($editquery1);
+				unset($editquery2);
+				unset($editquery3);
+				unset($editquery4); 
+						echo"mail sended to <b>".$to_email1.".</b> </br>";
 				
 				$txt = $today.'--'.$username1.'--'.$rec1['pname'].'--'.$rec1['pcategory'].'--'.$rec1['pedate'] . "\r\n";
 				file_put_contents('alert_products.txt', $txt, FILE_APPEND);
@@ -114,7 +192,35 @@ else
 	{	
 		foreach($result2 as $rec2)
 		{
-			$count++;
+			if(!is_null($rec2['drdate1']))
+									   {
+										   if($rec2['drdate0']!=='0000-00-00' )
+										   {
+											  $drdates[]= $rec2['drdate0'];
+
+											  if($rec2['drdate1']!=='0000-00-00'  )
+											   {
+												   $drdates[]= $rec2['drdate1'];;
+
+												   if($rec2['drdate2']!=='0000-00-00')
+													{
+														 $drdates[]= $rec2['drdate2'];;
+
+													   if($rec2['drdate3']!=='0000-00-00')
+														{
+															  $drdates[]= $rec2['drdate3'];;
+
+															if($rec2['drdate4']!=='0000-00-00')
+															{
+															  $drdates[]= $rec2['drdate4'];;
+
+															}
+														}
+													}
+											   }
+									     }
+									   }
+			
 			$username2= $rec2['username'];
 			$querymail2 = mysqli_query($con,"select email from users left join documents on(users.username=documents.username) where users.username = '$username2'");
 			$row2 = mysqli_fetch_row($querymail2);
@@ -146,6 +252,11 @@ else
 			</tr>
 			
 			<tr>
+				<td>reminder dates :</td>
+				<td><b>'.$drdates['0'].' '.$drdates['1'].' '.$drdates['2'].' '.$drdates['3'].' '.$drdates['4'].'</b></br></td>
+			</tr>
+			
+			<tr>
 				<td>Issue date :</td>
 				<td><b>'.$rec2['idate'].'</b></br></td>
 			</tr>
@@ -162,13 +273,43 @@ else
 				 <b>Expiry Tracker</b>
 				<footer> © all rights reserved by Expiry tracker</footer>
 				</div> ';
-			
+			unset($drdates);
 			 $headers  = 'MIME-Version: 1.0' . "\r\n";
              $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 			 $headers .= "From: expiry tracker <notify.expirytracker@gmail.com>" . "\r\n" .'Reply-To: notify.expirytracker@gmail.com' . "\r\n" .'X-Mailer: PHP/'; 
 		
 			if(mail($to_email2, $subject2, $body2, $headers))
 			{
+				$count++;
+				$dnamesend=$rec2['dname'];
+				
+				$editquery0=" UPDATE documents SET flag0=1 WHERE
+				username= '$username2' AND dname = '$dnamesend' AND  drdate0 <= current_date AND flag0=0 ";
+
+				$editquery1=" UPDATE documents SET flag1=1 WHERE
+				username= '$username2' AND dname= '$dnamesend' AND  drdate1 <= current_date AND flag1=0";
+
+				$editquery2=" UPDATE documents SET flag2=1 WHERE
+				username= '$username2' AND dname= '$dnamesend' AND  drdate2 <= current_date AND flag2=0";
+
+				$editquery3=" UPDATE documents SET flag3=1 WHERE
+				username= '$username2' AND dname= '$dnamesend' AND  drdate3 <= current_date AND flag3=0";
+
+				$editquery4=" UPDATE documents SET flag4=1 WHERE
+				username= '$username2' AND dname= '$dnamesend' AND  drdate4 <= current_date AND flag4=0";
+			
+				
+					mysqli_query($con, $editquery0);
+					mysqli_query($con, $editquery1);
+					mysqli_query($con, $editquery2);
+					mysqli_query($con, $editquery3);
+					mysqli_query($con, $editquery4);
+		            unset($dnamesend);
+				unset($editquery0);
+				unset($editquery1);
+				unset($editquery2);
+				unset($editquery3);
+				unset($editquery4);
 				
 				$txt = $today.'--'.$username2.'--'.$rec2['dname'].'--'.$rec2['dcategory'].'--'.$rec2['dedate']."\r\n";
 				file_put_contents('alert_documents.txt', $txt, FILE_APPEND);
